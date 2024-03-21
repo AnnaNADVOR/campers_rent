@@ -1,8 +1,8 @@
+import AdverstList from "components/AdvertsList/AdvertsList";
+
 const CatalogPage = () => {
     return (
-        <div>
-            Catalog page
-        </div>
+        <AdverstList/>
     )
 }
 
