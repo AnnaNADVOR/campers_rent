@@ -5,6 +5,7 @@ import capitalize from "services/capitalize";
 const FeaturesList = ({ features }) => {
     const details = Object.entries(features.details);
     return (
+        <>
         <ul>
             {features.children >0 && (<li>
                 <svg>
@@ -36,6 +37,8 @@ const FeaturesList = ({ features }) => {
                 </li>
             ))}
         </ul>
+        
+        </>
     )
 }
 

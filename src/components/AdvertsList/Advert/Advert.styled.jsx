@@ -27,7 +27,7 @@ export const CamperImgContainer = styled.div`
     height: 310px;    
 `
 
-export const CamperInfoCobtainer = styled.div`
+export const CamperInfoContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 526px;
@@ -56,6 +56,7 @@ export const AddToFavoriteBtn = styled.button`
 
 export const MainInfo = styled.div`
     display: flex; 
+    flex-wrap: wrap; 
     align-items: center; 
     justify-content: space-between; 
     margin-bottom: 8px;   
@@ -142,16 +143,3 @@ export const DetailItem = styled.div`
     }
 `
 
-export const ShowMoreBtn = styled.button`
-    width: 166px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 200px;
-    padding: 16px 40px;
-    background-color:${({ theme }) => theme.colors.accentOrange};
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px; 
-    letter-spacing: -0.01em;
-    color: ${({ theme }) => theme.colors.primaryWhite};; 
-`

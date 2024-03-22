@@ -7,7 +7,7 @@ const theme = {
         accentYellow: "#FFC531", 
         lightGray: "#F2F4F7",
         milky: "#F7F7F7",
-        primaryWhite: "#fff"
+        primaryWhite: "#fff",
     }
 }
 

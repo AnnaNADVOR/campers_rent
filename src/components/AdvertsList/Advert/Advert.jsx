@@ -1,11 +1,15 @@
 // import FeaturesList from "components/FeaturesList/FeaturesList";
+import { useSelector, useDispatch } from "react-redux";
 import sprite from "../../../assets/icons/sprite.svg";
 import capitalize from "services/capitalize";
+import MainButton from "components/Buttons/MainButton/MainButton";
+import { addToFavorites }  from "../../../redux/adverts/slice"; 
+
 import {
     AdvertCard,
     CamperImg,
     CamperImgContainer,
-    CamperInfoCobtainer,
+    CamperInfoContainer,
     Title,
     AddToFavoriteBtn,
     MainInfo,
@@ -17,23 +21,27 @@ import {
     Address,
     Description,
     DetailsList,
-    DetailItem,
-    ShowMoreBtn,
+    DetailItem,    
 } from "./Advert.styled"; 
 
 const Advert = ({ advert }) => {
+    const dispatch = useDispatch();
+    const onFavoriteClick = () => {
+        dispatch(addToFavorites(advert))
+    }
+
     return (
         <AdvertCard>
             <CamperImgContainer>
                 <CamperImg alt={advert.name} src={advert.gallery[0]} />   
             </CamperImgContainer>
-            <CamperInfoCobtainer>
+            <CamperInfoContainer>
              
             <MainInfo>
                 <Title>{advert.name}</Title>
                 <InfoContainer>
                     <Title>€ {advert.price.toFixed(2)}</Title>
-                    <AddToFavoriteBtn>
+                    <AddToFavoriteBtn onClick={onFavoriteClick}>
                         <svg>
                             <use href={`${sprite}#heart`}></use>
                         </svg>
@@ -124,10 +132,8 @@ const Advert = ({ advert }) => {
                     </li>
                 )}       
             </DetailsList>
-            <ShowMoreBtn type="button">
-                Show more
-                </ShowMoreBtn>
-            </CamperInfoCobtainer>  
+            <MainButton text="Show more" type="button"/>
+            </CamperInfoContainer>  
             {/* <FeaturesList features={advert} /> */}
         </AdvertCard>
     )
