@@ -1,7 +1,7 @@
 import Feature from "./Feature"
 import sprite from "../../assets/icons/sprite.svg";
 import capitalize from "services/capitalize";
-import {DetailsList, DetailItem } from "../AdvertsList/Advert/Advert.styled"
+import { DetailsList, DetailItem } from "../AdvertsList/Advert/Advert.styled";
 
 const FeaturesList = ({ advert }) => {
     const details = Object.entries(advert.details);
@@ -9,46 +9,45 @@ const FeaturesList = ({ advert }) => {
     return (      
         <DetailsList>
             {advert.children > 0 &&
-                (<li>
+                (
                     <DetailItem>
                         <svg>
                             <use href={`${sprite}#children`}></use>
                         </svg>
-                        <p>{advert.children} children</p>
+                        {advert.children} children
                     </DetailItem> 
-                </li>)
+                )
             }
-            <li>
+            
                 <DetailItem>
                     <svg>
                         <use href={`${sprite}#adults`}></use>
                     </svg>
-                    <p>{advert.adults} adults</p>  
+                    {advert.adults} adults
                 </DetailItem> 
-            </li>
-            <li>
+         
+           
                 <DetailItem>
                     <svg fill="none" stroke="black">
                         <use href={`${sprite}#transmission`}></use>
                     </svg>
-                    <p>{capitalize(advert.transmission)}</p>  
+                    {capitalize(advert.transmission)}
                 </DetailItem>   
-            </li>
-            <li>
+         
                 <DetailItem>
                     <svg>
                         <use href={`${sprite}#engine`}></use>
                     </svg>
-                    <p>{capitalize(advert.engine)}</p>  
+                   {capitalize(advert.engine)} 
                 </DetailItem>
-            </li>          
+                  
             {details.map(detail => (
                 !!detail[1] && (
-                    <li key={detail[0]}>
-                        <DetailItem >
+                   
+                        <DetailItem key={detail[0]}>
                             <Feature feature={detail} />
                         </DetailItem>
-                    </li>)
+                    )
                 ))
             }                                
         </DetailsList>      

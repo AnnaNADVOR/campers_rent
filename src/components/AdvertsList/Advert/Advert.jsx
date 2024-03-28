@@ -80,66 +80,66 @@ const Advert = ({ advert }) => {
 
             <DetailsList>
                 {advert.children > 0 && (
-                    <li>
+                    // <li>
                         <DetailItem>
                            <svg>
                                 <use href={`${sprite}#children`}></use>
                             </svg>
-                            <p>{advert.children} children</p> 
+                            {advert.children} children  
                         </DetailItem>                        
-                    </li>
+                    // </li>
                 )}
-                <li>
+                {/* <li> */}
                     <DetailItem>
                         <svg>
                             <use href={`${sprite}#adults`}></use>
                         </svg>
-                        <p>{advert.adults} adults</p>  
+                        {advert.adults} adults
                     </DetailItem> 
-                </li>
-                <li>
+                {/* </li> */}
+                {/* <li> */}
                     <DetailItem>
                         <svg fill="none" stroke="black">
                             <use href={`${sprite}#transmission`}></use>
                         </svg>
-                        <p>{capitalize(advert.transmission)}</p>   
+                        {capitalize(advert.transmission)}  
                     </DetailItem>
-                </li>
-                <li>
+                {/* </li> */}
+                {/* <li> */}
                     <DetailItem>
                         <svg>
                             <use href={`${sprite}#engine`}></use>
                         </svg>
-                        <p>{capitalize(advert.engine)}</p>    
+                        {capitalize(advert.engine)}   
                     </DetailItem>
-                </li>
+                {/* </li> */}
                 {advert.details.kitchen >= 1 && (                    
-                    <li>
+                    // <li>
                         <DetailItem>
                             <svg fill="none" stroke="black">
                                 <use href={`${sprite}#kitchen`}></use>
                             </svg>
-                            <p>Kitchen</p>  
+                            Kitchen
                         </DetailItem>
-                    </li>
+                    // </li>
                 )}                
-                <li>
+                {/* <li> */}
                     <DetailItem>
                         <svg fill="none" stroke="black">
                             <use href={`${sprite}#beds`}></use>
                         </svg>
-                        <p>{advert.details.beds} beds</p>  
+                        {advert.details.beds} beds
                     </DetailItem>                   
-                </li>
+                {/* </li> */}
                 {advert.details.airConditioner >= 1 && (
-                    <li>
+                    // <li>
                         <DetailItem>
                             <svg>
                                 <use href={`${sprite}#AC`}></use>
                             </svg>
-                            <p>AC</p>
+                            AC
                         </DetailItem>
-                    </li>
+                    // </li>
                 )}       
             </DetailsList>
             <MainButton text="Show more" type="button" onClick={toggleModal}/>

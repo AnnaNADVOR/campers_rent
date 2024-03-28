@@ -52,9 +52,9 @@ export const CamperImg = styled.img`
     height: 100%;
     width: 100%;
     border-radius: 10px;
-    border:2px solid green;
     object-fit: cover;    
     display: block;
+   
 `
 
 export const CamperImgContainer = styled.li`
@@ -62,10 +62,35 @@ export const CamperImgContainer = styled.li`
     height: 310px;   
     border-radius: 10px; 
     display: block;
-    border:2px solid red;
 `
+
 export const CamperGallery = styled.ul`
     display: flex; 
-    justify-content: space-between;
+    gap: 16px;
+`
 
+export const Description = styled.p`
+    margin-top: 24px; 
+    
+`
+export const MainInfoContainer = styled.div`
+    overflow-y: auto;
+    max-height: 450px;
+    margin-top: 24px;
+    padding-right: 16px; 
+    
+`
+export const TabsList = styled.ul`
+    display: flex; 
+    gap: 40px; 
+    margin-top: 40px; 
+`
+
+export const Tab = styled.button`
+border: none; 
+background-color: transparent; 
+font-weight: 600;
+font-size: 20px;
+line-height: 24px;
+color: ${({ theme }) => theme.colors.darkblue}; 
 `

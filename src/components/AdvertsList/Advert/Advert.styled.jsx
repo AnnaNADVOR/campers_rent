@@ -123,7 +123,7 @@ export const DetailsList = styled.ul`
     margin-bottom: 24px;    
 `
 
-export const DetailItem = styled.div`
+export const DetailItem = styled.li`
     display: flex; 
     justify-content: center;
     align-items: center; 

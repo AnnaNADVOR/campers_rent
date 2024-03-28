@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Backdrop = styled.div`
-     position: fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -15,7 +15,10 @@ export const Backdrop = styled.div`
 
 export const ModalContainer = styled.div`
     position: absolute;
-    width: calc(90vw);
+    /* width: calc(90vw); */
+    height: calc(90vh);
+    width: 982px;
+/* height: 720px; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
