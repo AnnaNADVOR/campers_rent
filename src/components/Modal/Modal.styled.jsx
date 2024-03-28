@@ -15,8 +15,9 @@ export const Backdrop = styled.div`
 
 export const ModalContainer = styled.div`
     position: absolute;
+    /* width: calc(70vw); */
     /* width: calc(90vw); */
-    height: calc(90vh);
+    /* height: 90vh; */
     width: 982px;
 /* height: 720px; */
     top: 50%;

@@ -67,15 +67,19 @@ export const CamperImgContainer = styled.li`
 export const CamperGallery = styled.ul`
     display: flex; 
     gap: 16px;
+     margin-bottom: 24px; 
 `
 
 export const Description = styled.p`
-    margin-top: 24px; 
+margin-bottom: 44px;
+   
     
 `
 export const MainInfoContainer = styled.div`
     overflow-y: auto;
-    max-height: 450px;
+    /* max-height: calc(100%-500px); */
+    /* min-height: 300px;  */
+    max-height: 520px;
     margin-top: 24px;
     padding-right: 16px; 
     
@@ -83,7 +87,7 @@ export const MainInfoContainer = styled.div`
 export const TabsList = styled.ul`
     display: flex; 
     gap: 40px; 
-    margin-top: 40px; 
+    margin-bottom: 44px; 
 `
 
 export const Tab = styled.button`

@@ -1,13 +1,13 @@
 import Feature from "./Feature"
 import sprite from "../../assets/icons/sprite.svg";
 import capitalize from "services/capitalize";
-import { DetailsList, DetailItem } from "../AdvertsList/Advert/Advert.styled";
-
+import { DetailItem } from "../AdvertsList/Advert/Advert.styled";
+import { List } from "./FeaturesList.styled";
 const FeaturesList = ({ advert }) => {
     const details = Object.entries(advert.details);
     
     return (      
-        <DetailsList>
+        <List>
             {advert.children > 0 &&
                 (
                     <DetailItem>
@@ -50,7 +50,7 @@ const FeaturesList = ({ advert }) => {
                     )
                 ))
             }                                
-        </DetailsList>      
+        </List>      
     )
 }
 
