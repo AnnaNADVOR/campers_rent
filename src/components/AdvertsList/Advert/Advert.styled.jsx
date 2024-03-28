@@ -40,19 +40,19 @@ export const Title = styled.p`
     color:${({ theme }) => theme.colors.darkblue};   
 `
 
-export const AddToFavoriteBtn = styled.button`
-    width: 24px; 
-    height: 24px; 
-    border: none;
-    background-color: transparent; 
+// export const AddToFavoriteBtn = styled.button`
+//     width: 24px; 
+//     height: 24px; 
+//     border: none;
+//     background-color: transparent; 
 
-    svg {
-        width: 24px; 
-        height: 24px;
-        fill: none; 
-        stroke:${({ theme }) => theme.colors.darkblue}; 
-    }
-`
+//     svg {
+//         width: 24px; 
+//         height: 24px;
+//         fill: none; 
+//         stroke:${({ theme }) => theme.colors.darkblue}; 
+//     }
+// `
 
 export const MainInfo = styled.div`
     display: flex; 
@@ -128,7 +128,7 @@ export const DetailItem = styled.div`
     justify-content: center;
     align-items: center; 
     gap: 8px;
-    min-width: 87px;
+    min-width: 87px;    
     border-radius: 100px;
     padding: 12px 18px;
     background-color:${({ theme }) => theme.colors.lightGray}; 

@@ -1,44 +1,57 @@
 import Feature from "./Feature"
 import sprite from "../../assets/icons/sprite.svg";
 import capitalize from "services/capitalize";
+import {DetailsList, DetailItem } from "../AdvertsList/Advert/Advert.styled"
 
-const FeaturesList = ({ features }) => {
-    const details = Object.entries(features.details);
-    return (
-        <>
-        <ul>
-            {features.children >0 && (<li>
-                <svg>
-                    <use href={`${sprite}#children`}></use>
-                </svg>
-                <p>{features.children} children</p>
-            </li>)}
+const FeaturesList = ({ advert }) => {
+    const details = Object.entries(advert.details);
+    
+    return (      
+        <DetailsList>
+            {advert.children > 0 &&
+                (<li>
+                    <DetailItem>
+                        <svg>
+                            <use href={`${sprite}#children`}></use>
+                        </svg>
+                        <p>{advert.children} children</p>
+                    </DetailItem> 
+                </li>)
+            }
             <li>
-                <svg>
-                    <use href={`${sprite}#adults`}></use>
-                </svg>
-                <p>{features.adults} adults</p>  
+                <DetailItem>
+                    <svg>
+                        <use href={`${sprite}#adults`}></use>
+                    </svg>
+                    <p>{advert.adults} adults</p>  
+                </DetailItem> 
             </li>
             <li>
-                <svg fill="none" stroke="black">
-                    <use href={`${sprite}#transmission`}></use>
-                </svg>
-                <p>{capitalize(features.transmission)}</p>  
+                <DetailItem>
+                    <svg fill="none" stroke="black">
+                        <use href={`${sprite}#transmission`}></use>
+                    </svg>
+                    <p>{capitalize(advert.transmission)}</p>  
+                </DetailItem>   
             </li>
             <li>
-                <svg>
-                    <use href={`${sprite}#engine`}></use>
-                </svg>
-                <p>{capitalize(features.engine)}</p>  
-            </li>
+                <DetailItem>
+                    <svg>
+                        <use href={`${sprite}#engine`}></use>
+                    </svg>
+                    <p>{capitalize(advert.engine)}</p>  
+                </DetailItem>
+            </li>          
             {details.map(detail => (
-                <li key={detail[0]}>
-                    <Feature feature={detail} />
-                </li>
-            ))}
-        </ul>
-        
-        </>
+                !!detail[1] && (
+                    <li key={detail[0]}>
+                        <DetailItem >
+                            <Feature feature={detail} />
+                        </DetailItem>
+                    </li>)
+                ))
+            }                                
+        </DetailsList>      
     )
 }
 

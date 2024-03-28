@@ -20,10 +20,13 @@ const advertsSlice = createSlice({
       isLast: true,
       isLoading: false,
       error: null,
-  }, 
+    }, 
   reducers: {
     addToFavorites: (state, action) => {
       state.favorites.push(action.payload);
+    },
+    removeFromFavorites: (state, action) => {
+      state.favorites = state.favorites.filter(advert => advert._id !== action.payload._id);
     }
   },
     extraReducers: builder => {
@@ -49,3 +52,4 @@ const persistConfig = {
 
 export const advertsReducer = persistReducer(persistConfig, advertsSlice.reducer);
 export const addToFavorites  = advertsSlice.actions.addToFavorites; 
+export const removeFromFavorites = advertsSlice.actions.removeFromFavorites;

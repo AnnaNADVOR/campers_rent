@@ -1,17 +1,18 @@
-// import FeaturesList from "components/FeaturesList/FeaturesList";
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation } from 'react-router-dom';
 import sprite from "../../../assets/icons/sprite.svg";
 import capitalize from "services/capitalize";
 import MainButton from "components/Buttons/MainButton/MainButton";
-import { addToFavorites }  from "../../../redux/adverts/slice"; 
+import { addToFavorites, removeFromFavorites }  from "../../../redux/adverts/slice"; 
+import { selectFavorites } from "../../../redux/adverts/selectors";
 
 import {
     AdvertCard,
     CamperImg,
     CamperImgContainer,
     CamperInfoContainer,
-    Title,
-    AddToFavoriteBtn,
+    Title,   
     MainInfo,
     InfoContainer,
     AdditionalInfo,
@@ -23,11 +24,24 @@ import {
     DetailsList,
     DetailItem,    
 } from "./Advert.styled"; 
+import AddToFavoriteButton from "components/Buttons/AddToFavoriteButton/AddToFavoriteButton";
+import Modal from "components/Modal/Modal";
+import AdvertDetails from "components/AdvertDetail/AdvertDetails";
 
 const Advert = ({ advert }) => {
+    const [showModal, setShowModal] = useState(false);
+    const toggleModal = () => setShowModal(prevShowModal => !prevShowModal);
+    const location = useLocation();
+    const favoritesAdverts = useSelector(selectFavorites); 
+    const isAdvertFavorite = favoritesAdverts.find(favoriteAdvert => favoriteAdvert._id === advert._id);
+
     const dispatch = useDispatch();
     const onFavoriteClick = () => {
-        dispatch(addToFavorites(advert))
+        if (isAdvertFavorite) {            
+            dispatch (removeFromFavorites(advert))
+        } else {
+          dispatch(addToFavorites(advert));     
+        }             
     }
 
     return (
@@ -41,11 +55,7 @@ const Advert = ({ advert }) => {
                 <Title>{advert.name}</Title>
                 <InfoContainer>
                     <Title>€ {advert.price.toFixed(2)}</Title>
-                    <AddToFavoriteBtn onClick={onFavoriteClick}>
-                        <svg>
-                            <use href={`${sprite}#heart`}></use>
-                        </svg>
-                    </AddToFavoriteBtn>  
+                        <AddToFavoriteButton onClick={onFavoriteClick} isActive={isAdvertFavorite} location={location} />                 
                 </InfoContainer>
             </MainInfo>
 
@@ -132,9 +142,13 @@ const Advert = ({ advert }) => {
                     </li>
                 )}       
             </DetailsList>
-            <MainButton text="Show more" type="button"/>
+            <MainButton text="Show more" type="button" onClick={toggleModal}/>
             </CamperInfoContainer>  
-            {/* <FeaturesList features={advert} /> */}
+            {showModal && (
+                <Modal closeModal={toggleModal}>
+                    <AdvertDetails advert={advert} />
+                </Modal>
+            )}            
         </AdvertCard>
     )
 }
