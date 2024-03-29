@@ -8,9 +8,7 @@ const FeaturesTab = ({ advert }) => {
             <FeaturesList advert={advert} />
             <VehicleDetails advert={advert}/>
         </TabContainer>
-    )
-    
-
+    )    
 }
 
 export default FeaturesTab; 

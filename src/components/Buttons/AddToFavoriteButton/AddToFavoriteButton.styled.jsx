@@ -15,9 +15,9 @@ export const RemoveIcon = styled.svg`
 `
 
 export const FavoriteIcon = styled.svg`
- width: 24px; 
-        height: 24px;
-        fill: ${({ isActive, theme }) => isActive ? theme.colors.accentOrange : "none"}; 
-        stroke:${({ isActive, theme }) => isActive ? theme.colors.accentOrange : theme.colors.darkblue}; 
+    width: 24px; 
+    height: 24px;
+    fill: ${({ isActive, theme }) => isActive ? theme.colors.accentOrange : "none"}; 
+    stroke:${({ isActive, theme }) => isActive ? theme.colors.accentOrange : theme.colors.darkblue}; 
     
 `

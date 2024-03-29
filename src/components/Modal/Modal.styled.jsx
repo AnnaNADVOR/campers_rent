@@ -15,11 +15,8 @@ export const Backdrop = styled.div`
 
 export const ModalContainer = styled.div`
     position: absolute;
-    /* width: calc(70vw); */
-    /* width: calc(90vw); */
-    /* height: 90vh; */
+    height: 95vh;
     width: 982px;
-/* height: 720px; */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
@@ -42,47 +39,10 @@ export const CloseButton = styled.button`
 
 `
 export const CloseIcon = styled.svg`
- fill: currentColor;
-   stroke: ${({ theme }) => theme.colors.darkblue};
-   width: 18px;
-   height: 18px;
-   transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    fill: currentColor;
+    stroke: ${({ theme }) => theme.colors.darkblue};
+    width: 18px;
+    height: 18px;
+    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `
 
-// @media screen and (min-width: 375px) {
-//     .modal {
-//         width: 335px;
-//     }
-// }
-
-// @media screen and (min-width: 768px) {
-//     .modal {
-//         width: 350px;
-//     }
-// }
-
-// .closeButton {
-//     position: absolute;
-//     width: 18px;
-//     height: 18px;
-//     top: 14px;
-//     right: 14px;
-//     background-color: transparent;
-//     border: none;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
-
-// .closeButton:hover svg,
-// .closeButton:focus svg {
-//     stroke: var(--add-board-button-hover-bg);
-// }
-
-// .closeButtonSvg {
-//     fill: currentColor;
-//     stroke: var(--burger-color);
-//     width: 18px;
-//     height: 18px;
-//     transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
-// }

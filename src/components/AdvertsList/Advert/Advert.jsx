@@ -38,7 +38,7 @@ const Advert = ({ advert }) => {
     const dispatch = useDispatch();
     const onFavoriteClick = () => {
         if (isAdvertFavorite) {            
-            dispatch (removeFromFavorites(advert))
+            dispatch(removeFromFavorites(advert));
         } else {
           dispatch(addToFavorites(advert));     
         }             
@@ -80,66 +80,64 @@ const Advert = ({ advert }) => {
 
             <DetailsList>
                 {advert.children > 0 && (
-                    // <li>
-                        <DetailItem>
+                    <DetailItem>
                            <svg>
                                 <use href={`${sprite}#children`}></use>
                             </svg>
                             {advert.children} children  
                         </DetailItem>                        
-                    // </li>
+                    
                 )}
-                {/* <li> */}
+              
                     <DetailItem>
                         <svg>
                             <use href={`${sprite}#adults`}></use>
                         </svg>
                         {advert.adults} adults
                     </DetailItem> 
-                {/* </li> */}
-                {/* <li> */}
+               
                     <DetailItem>
                         <svg fill="none" stroke="black">
                             <use href={`${sprite}#transmission`}></use>
                         </svg>
                         {capitalize(advert.transmission)}  
                     </DetailItem>
-                {/* </li> */}
-                {/* <li> */}
+                
+               
                     <DetailItem>
                         <svg>
                             <use href={`${sprite}#engine`}></use>
                         </svg>
                         {capitalize(advert.engine)}   
                     </DetailItem>
-                {/* </li> */}
+             
                 {advert.details.kitchen >= 1 && (                    
-                    // <li>
+                 
                         <DetailItem>
                             <svg fill="none" stroke="black">
                                 <use href={`${sprite}#kitchen`}></use>
                             </svg>
                             Kitchen
                         </DetailItem>
-                    // </li>
+                 
                 )}                
-                {/* <li> */}
+               
                     <DetailItem>
                         <svg fill="none" stroke="black">
                             <use href={`${sprite}#beds`}></use>
                         </svg>
                         {advert.details.beds} beds
                     </DetailItem>                   
-                {/* </li> */}
+              
                 {advert.details.airConditioner >= 1 && (
-                    // <li>
+                
                         <DetailItem>
                             <svg>
                                 <use href={`${sprite}#AC`}></use>
                             </svg>
                             AC
                         </DetailItem>
-                    // </li>
+                  
                 )}       
             </DetailsList>
             <MainButton text="Show more" type="button" onClick={toggleModal}/>

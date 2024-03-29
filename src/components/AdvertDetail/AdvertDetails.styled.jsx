@@ -53,12 +53,10 @@ export const CamperImg = styled.img`
     width: 100%;
     border-radius: 10px;
     object-fit: cover;    
-    display: block;
-   
+    display: block;   
 `
-
 export const CamperImgContainer = styled.li`
-    width: 290px;
+    width: calc(100% / 3);
     height: 310px;   
     border-radius: 10px; 
     display: block;
@@ -67,34 +65,47 @@ export const CamperImgContainer = styled.li`
 export const CamperGallery = styled.ul`
     display: flex; 
     gap: 16px;
-     margin-bottom: 24px; 
+    margin-bottom: 24px; 
 `
 
 export const Description = styled.p`
-margin-bottom: 44px;
-   
-    
+    margin-bottom: 44px;       
 `
 export const MainInfoContainer = styled.div`
-    overflow-y: auto;
-    /* max-height: calc(100%-500px); */
-    /* min-height: 300px;  */
-    max-height: 520px;
+    overflow-y: auto;    
+    max-height: calc(100vh - 270px);
     margin-top: 24px;
-    padding-right: 16px; 
-    
+    padding-right: 16px;     
 `
+
 export const TabsList = styled.ul`
     display: flex; 
     gap: 40px; 
+    border-bottom: ${({ theme }) => theme.borders.mainBorder};
     margin-bottom: 44px; 
 `
 
 export const Tab = styled.button`
-border: none; 
-background-color: transparent; 
-font-weight: 600;
-font-size: 20px;
-line-height: 24px;
-color: ${({ theme }) => theme.colors.darkblue}; 
+    border: none; 
+    background-color: transparent; 
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    padding-bottom: 24px;
+    color: ${({ theme }) => theme.colors.darkblue};
+    position:relative;  
+
+    &.active {
+       color:${({ theme }) => theme.colors.accentOrange};
+    }
+
+    &.active::after {
+        position: absolute;        
+        top: 46px;
+        display: block;
+        content: "";
+        width: 100%;
+        border-bottom: ${({ theme }) => theme.borders.accentBorder};
+        border-radius: 5px;
+    }
 `

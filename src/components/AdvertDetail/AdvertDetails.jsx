@@ -1,4 +1,4 @@
-import FeaturesList from "components/FeaturesList/FeaturesList";
+import { useState } from "react";
 import sprite from "../../assets/icons/sprite.svg";
 import {
     MainText,
@@ -14,11 +14,17 @@ import {
     MainInfoContainer,
     TabsList,
     Tab,
+  
 } from "./AdvertDetails.styled";
 import FeaturesTab from "components/FeaturesTab/FeaturesTab";
+import ReviewsTab from "components/ReviewsTab/ReviewsTab";
 
 const AdvertDetails = ({ advert }) => {
     console.log(advert)
+    const [activeTab, setActiveTab] = useState("features");
+    const handleTabClick = (event) => {
+        setActiveTab(event.target.ariaLabel);
+    }
     return (
         <div>
             <MainText>{advert.name}</MainText >
@@ -39,7 +45,8 @@ const AdvertDetails = ({ advert }) => {
                 </Location >
             </AdditionalInfo>
             <MainText>€ {advert.price.toFixed(2)}</MainText>
-            <MainInfoContainer>
+
+            <MainInfoContainer>                      
                 <CamperGallery>
                 <CamperImgContainer >
                     <CamperImg src={advert.gallery[0]} alt={advert.name} />                
@@ -51,17 +58,23 @@ const AdvertDetails = ({ advert }) => {
                     <CamperImg src={advert.gallery[2]} alt={advert.name} />                 
                 </CamperImgContainer >
             </CamperGallery>
-            <Description>{advert.description}</Description>
-            {/* <FeaturesList advert={advert} />   */}
-            <TabsList >
+                <Description>{advert.description}</Description>
+                
+                   <TabsList>
                 <li>
-                    <Tab>Features</Tab>
+                    <Tab type="button" aria-label="features" onClick={handleTabClick} className={activeTab === "features" ? "active" : ""}>Features</Tab>
                 </li>
                 <li>
-                    <Tab>Reviews</Tab>
+                    <Tab type="button" aria-label="reviews" onClick={handleTabClick} className={activeTab === "reviews" ? "active" : ""}>Reviews</Tab>
                 </li>              
-                </TabsList>
-              <FeaturesTab advert={ advert} />   
+                    </TabsList>
+
+                <div style={{display:"flex"}}>    
+                    {activeTab === "features" && <FeaturesTab advert={advert} />}
+                    {activeTab === "reviews" && <ReviewsTab reviews={advert.reviews} />}         
+                <div>Form</div> 
+                </div>    
+                          
             </MainInfoContainer>  
            
         </div>
