@@ -1,14 +1,27 @@
 import sprite from "../../assets/icons/sprite.svg";
-
+import {
+    TabContainer,
+    // ReviewsList,
+    ReviewsItem,
+    ReviewerContainer,
+    NameLabel,
+    ReviewerName,
+    RatingList,
+} from "./ReviewsTab.styled";
 const ReviewsTab = ({ reviews }) => {
     
     return (
-        <div>
+        <TabContainer>
             <ul>
                 {reviews.map(review => (
-                    <li key={review.reviewer_name}>
-                        <p>{review.reviewer_name}</p>
-                        <ul>
+                    <ReviewsItem key={review.reviewer_name}>
+                        <ReviewerContainer>
+                          <NameLabel>
+                            {review.reviewer_name.slice(0,1)}
+                            </NameLabel>
+                            <div>
+                                <ReviewerName>{review.reviewer_name}</ReviewerName>
+                        <RatingList>
                             {Array.from({ length: review.reviewer_rating }, (v, i) => i + 1).map(i => (
                                 <li key={`${i} ${review.reviewer_name}`}>
                                     <svg width="16px" height="16px" >
@@ -25,12 +38,16 @@ const ReviewsTab = ({ reviews }) => {
                                     </li>
                                 )))
                             }
-                        </ul>
+                        </RatingList>  
+                            </div>
+                        
+                        </ReviewerContainer>
+                        
                         <p>{review.comment}</p>
-                    </li>
+                    </ReviewsItem>
                 ))}
             </ul>
-        </div>
+        </TabContainer>
     )
 
 }
