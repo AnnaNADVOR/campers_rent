@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/test/static/css/main.34924d6a.css",
+    "main.js": "/test/static/js/main.013eae36.js",
+    "static/media/Inter-SemiBold.ttf": "/test/static/media/Inter-SemiBold.6058d3da655fb35169c2.ttf",
+    "static/media/Inter-Medium.ttf": "/test/static/media/Inter-Medium.3f7acfe50aad7ad68548.ttf",
+    "static/media/Inter-Regular.ttf": "/test/static/media/Inter-Regular.9ca9ba81e9dcaa12b3a1.ttf",
+    "static/media/Inter-SemiBold.woff": "/test/static/media/Inter-SemiBold.f3e4ab53b4f9eeb23eb9.woff",
+    "static/media/Inter-Medium.woff": "/test/static/media/Inter-Medium.c233b5404cdb950cc676.woff",
+    "static/media/Inter-Regular.woff": "/test/static/media/Inter-Regular.f54e05a8147cb3ac7860.woff",
+    "static/media/Inter-SemiBold.woff2": "/test/static/media/Inter-SemiBold.d873c5ea912cb7dff6d9.woff2",
+    "static/media/Inter-Medium.woff2": "/test/static/media/Inter-Medium.19e05b2238d4f2d8d3d5.woff2",
+    "static/media/Inter-Regular.woff2": "/test/static/media/Inter-Regular.e976b84791e6a5f65646.woff2",
+    "static/media/sprite.svg": "/test/static/media/sprite.ae4069775c95dc056819de0fd3366ea4.svg",
+    "index.html": "/test/index.html",
+    "main.34924d6a.css.map": "/test/static/css/main.34924d6a.css.map",
+    "main.013eae36.js.map": "/test/static/js/main.013eae36.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.34924d6a.css",
+    "static/js/main.013eae36.js"
+  ]
+}
