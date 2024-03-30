@@ -1,7 +1,6 @@
 import sprite from "../../assets/icons/sprite.svg";
 import {
     TabContainer,
-    // ReviewsList,
     ReviewsItem,
     ReviewerContainer,
     NameLabel,
@@ -21,8 +20,16 @@ const ReviewsTab = ({ reviews }) => {
                             </NameLabel>
                             <div>
                                 <ReviewerName>{review.reviewer_name}</ReviewerName>
-                        <RatingList>
-                            {Array.from({ length: review.reviewer_rating }, (v, i) => i + 1).map(i => (
+                                <RatingList>
+                                    {Array.from({ length: 5 }, (v, i) => i + 1).map(i => (
+                                <li key={`${i} ${review.reviewer_name}`}>
+                                    <svg width="16px" height="16px" >
+                                        
+                                        <use href={i <= review.reviewer_rating ? `${sprite}#star` : `${sprite}#starWhite`}></use>
+                                    </svg>
+                                </li>))                                
+                            }
+                            {/* {Array.from({ length: review.reviewer_rating }, (v, i) => i + 1).map(i => (
                                 <li key={`${i} ${review.reviewer_name}`}>
                                     <svg width="16px" height="16px" >
                                         <use href={`${sprite}#star`}></use>
@@ -34,10 +41,10 @@ const ReviewsTab = ({ reviews }) => {
                                     <li key={i}>
                                         <svg width="16px" height="16px" >
                                             <use href={`${sprite}#starWhite`}></use>
-                                         </svg>
+                                        </svg>
                                     </li>
                                 )))
-                            }
+                            } */}
                         </RatingList>  
                             </div>
                         

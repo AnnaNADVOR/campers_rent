@@ -20,6 +20,7 @@ import FeaturesTab from "components/FeaturesTab/FeaturesTab";
 import ReviewsTab from "components/ReviewsTab/ReviewsTab";
 
 const AdvertDetails = ({ advert }) => {
+    console.log(advert)
     const [activeTab, setActiveTab] = useState("features");
     const handleTabClick = (event) => {
         setActiveTab(event.target.ariaLabel);
