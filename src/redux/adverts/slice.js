@@ -32,7 +32,8 @@ const advertsSlice = createSlice({
     extraReducers: builder => {
         builder 
             .addCase(fetchAdverts.pending, handlePending)
-            .addCase(fetchAdverts.fulfilled, (state, action) => {
+          .addCase(fetchAdverts.fulfilled, (state, action) => {
+              // state.advertsList = action.payload;
               state.advertsList = [...state.advertsList, ...action.payload];
               state.isLast = action.payload.length < 4; 
               state.isLoading = false; 
