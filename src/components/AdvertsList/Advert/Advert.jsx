@@ -26,7 +26,7 @@ import {
 } from "./Advert.styled"; 
 import AddToFavoriteButton from "components/Buttons/AddToFavoriteButton/AddToFavoriteButton";
 import Modal from "components/Modal/Modal";
-import AdvertDetails from "components/AdvertDetail/AdvertDetails";
+import AdvertDetails from "components/AdvertDetails/AdvertDetails";
 
 const Advert = ({ advert }) => {
     const [showModal, setShowModal] = useState(false);

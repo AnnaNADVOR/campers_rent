@@ -14,10 +14,11 @@ import {
     MainInfoContainer,
     TabsList,
     Tab,
-  
+    TabContainer,  
 } from "./AdvertDetails.styled";
 import FeaturesTab from "components/FeaturesTab/FeaturesTab";
 import ReviewsTab from "components/ReviewsTab/ReviewsTab";
+import BookForm from "components/BookForm/BookForm";
 
 const AdvertDetails = ({ advert }) => {
     console.log(advert)
@@ -69,12 +70,12 @@ const AdvertDetails = ({ advert }) => {
                 </li>              
                     </TabsList>
 
-                <div style={{display:"flex"}}>    
+                <TabContainer>    
                     {activeTab === "features" && <FeaturesTab advert={advert} />}
                     {activeTab === "reviews" && <ReviewsTab reviews={advert.reviews} />}         
-                <div>Form</div> 
-                </div>    
-                          
+               <BookForm/>        
+                </TabContainer>    
+                   
             </MainInfoContainer>  
            
         </div>

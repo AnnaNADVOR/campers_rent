@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 
 export const TabContainer = styled.div`
-    width: 430px;    
+    /* width: 430px;     */
+    width: 47%;
 `
 
 export const ReviewsItem = styled.li`

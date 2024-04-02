@@ -109,3 +109,9 @@ export const Tab = styled.button`
         border-radius: 5px;
     }
 `
+ export const TabContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;    
+
+`
