@@ -73,7 +73,7 @@ const AdvertDetails = ({ advert }) => {
                 <TabContainer>    
                     {activeTab === "features" && <FeaturesTab advert={advert} />}
                     {activeTab === "reviews" && <ReviewsTab reviews={advert.reviews} />}         
-               <BookForm/>        
+                    <BookForm advertId={advert._id} />        
                 </TabContainer>    
                    
             </MainInfoContainer>  

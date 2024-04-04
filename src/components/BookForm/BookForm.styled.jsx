@@ -48,3 +48,34 @@ export const Textarea = styled(Field)`
     color: ${({ theme }) => theme.colors.formText};
     margin-bottom: 24px; 
 `
+export const CalendarIcon = styled.svg`
+    position: absolute;
+    bottom: 50%;
+    right: 18px;
+    width: 20px;
+    height: 20px; 
+    stroke: ${({ theme }) => theme.colors.darkblue}; 
+    fill: none;       
+` 
+export const InputWrapper = styled.div`
+    position: relative; 
+
+    input{
+       width: 100%;
+        padding: 18px; 
+        border-radius: 10px;
+        border: none;
+        background-color: ${({ theme }) => theme.colors.milky};
+        outline: transparent;
+        font-size: 16px;
+        line-height: 20px; 
+        color: ${({ theme }) => theme.colors.formText};
+        margin-bottom: 14px; 
+
+        svg:hover {
+        width: 60px; 
+    }
+    }
+
+    
+`

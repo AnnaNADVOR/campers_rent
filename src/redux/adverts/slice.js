@@ -17,6 +17,7 @@ const advertsSlice = createSlice({
     initialState: {
       advertsList: [],
       favorites: [],
+      booked: [],
       isLast: true,
       isLoading: false,
       error: null,
@@ -27,11 +28,15 @@ const advertsSlice = createSlice({
     },
     removeFromFavorites: (state, action) => {
       state.favorites = state.favorites.filter(advert => advert._id !== action.payload._id);
+    },
+    addToBooked: (state, action) => {
+      console.log("payload", action.payload)
+      state.booked.push(action.payload);
     }
   },
     extraReducers: builder => {
         builder 
-            .addCase(fetchAdverts.pending, handlePending)
+          .addCase(fetchAdverts.pending, handlePending)
           .addCase(fetchAdverts.fulfilled, (state, action) => {
               // state.advertsList = action.payload;
               state.advertsList = [...state.advertsList, ...action.payload];
@@ -54,3 +59,4 @@ const persistConfig = {
 export const advertsReducer = persistReducer(persistConfig, advertsSlice.reducer);
 export const addToFavorites  = advertsSlice.actions.addToFavorites; 
 export const removeFromFavorites = advertsSlice.actions.removeFromFavorites;
+export const addToBooked  = advertsSlice.actions.addToBooked; 
