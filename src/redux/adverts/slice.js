@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAdverts } from "./operations";
+import { bookedVan, fetchAdverts } from "./operations";
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
@@ -29,10 +29,9 @@ const advertsSlice = createSlice({
     removeFromFavorites: (state, action) => {
       state.favorites = state.favorites.filter(advert => advert._id !== action.payload._id);
     },
-    addToBooked: (state, action) => {
-      console.log("payload", action.payload)
-      state.booked.push(action.payload);
-    }
+    // addToBooked: (state, action) => {
+    //   state.booked.push(action.payload);
+    // }
   },
     extraReducers: builder => {
         builder 
@@ -44,7 +43,10 @@ const advertsSlice = createSlice({
               state.isLoading = false; 
               state.error = null;                                
             })
-            .addCase(fetchAdverts.rejected, handleRejected)
+        .addCase(fetchAdverts.rejected, handleRejected)
+          .addCase(bookedVan.fulfilled, (state, action) => {
+        state.booked.push(action.payload);
+      })
             
       
     }
@@ -55,8 +57,7 @@ const persistConfig = {
     storage,
     whitelist: ['favorites'],
 } 
-
 export const advertsReducer = persistReducer(persistConfig, advertsSlice.reducer);
 export const addToFavorites  = advertsSlice.actions.addToFavorites; 
 export const removeFromFavorites = advertsSlice.actions.removeFromFavorites;
-export const addToBooked  = advertsSlice.actions.addToBooked; 
+// export const addToBooked  = advertsSlice.actions.addToBooked; 

@@ -13,3 +13,9 @@ export const fetchAdverts = createAsyncThunk(
   }
 )
 
+export const bookedVan = createAsyncThunk(
+  "adverts/bookedVan",
+  async (data) => {
+    return data;
+  }
+)

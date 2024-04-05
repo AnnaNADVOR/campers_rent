@@ -55,7 +55,11 @@ export const CalendarIcon = styled.svg`
     width: 20px;
     height: 20px; 
     stroke: ${({ theme }) => theme.colors.darkblue}; 
-    fill: none;       
+    fill: none;  
+    
+    &:hover{
+       stroke: ${({ theme }) => theme.colors.accentOrangeHover}; 
+    }
 ` 
 export const InputWrapper = styled.div`
     position: relative; 

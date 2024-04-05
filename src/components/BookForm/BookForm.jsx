@@ -13,8 +13,10 @@ import MainButton from 'components/Buttons/MainButton/MainButton';
 import Calendar from 'components/Calendar/Calendar';
 
 import sprite from "../../assets/icons/sprite.svg";
-import { useDispatch } from 'react-redux';
-import { addToBooked } from '../../redux/adverts/slice';
+import { useDispatch, useSelector } from 'react-redux';
+// import { addToBooked } from '../../redux/adverts/slice';
+import {bookedVan} from '../../redux/adverts/operations';
+import { selectBooked } from '../../redux/adverts/selectors';
 const addFormSchema = Yup.object().shape({
     customerName: Yup.string().required('Name is required'), 
     customerEmail:Yup.string().email('Invalid email').required('Email is required'),  
@@ -30,17 +32,22 @@ const BookForm = ({advertId}) => {
         comment: '',    
     };
     const dispatch = useDispatch(); 
-
-    const handleSubmit = (values, actions) => {
-        dispatch(addToBooked({
+        
+    const handleSubmit = async (values, actions) => {
+        dispatch(bookedVan({
             advertId: advertId,
             name: values.customerName, 
             email: values.customerEmail, 
             date: values.bookingDate.toISOString(),
             comment: values.comment                        
-        }))
-        actions.resetForm();
-     }
+        })).then(action => {
+            if (action.type === "adverts/bookedVan/fulfilled") {
+                actions.resetForm();
+                window.location.reload();                
+            }
+        })    
+    }
+
     return (
        
         <Formik
@@ -58,7 +65,6 @@ const BookForm = ({advertId}) => {
                             as="input"
                             type="text"
                             placeholder="Name"
-                            required={true}
                             autoFocus
                         />
                         {touched.customerName && errors.customerName ? <p>{errors.customerName}</p> : null}
@@ -68,17 +74,19 @@ const BookForm = ({advertId}) => {
                             name="customerEmail"
                             as="input"
                             type="email"
-                            placeholder="Email"
-                            required={true}
+                            placeholder="Email"                            
                         />
                         {touched.customerEmail && errors.customerEmail ? <p>{errors.customerEmail}</p> : null}
                     </label>
                     <label htmlFor='bookingDate'>
                         <InputWrapper>
                             <Calendar />
-                            <CalendarIcon>
+                            
+                                                          <CalendarIcon>
                                 <use href={`${sprite}#calendar`}></use>
-                            </CalendarIcon>
+                            </CalendarIcon>  
+                            
+
                         </InputWrapper>
                         {touched.bookingDate && errors.bookingDate ? <p>{errors.bookingDate}</p> : null}  
                     </label>
@@ -93,8 +101,7 @@ const BookForm = ({advertId}) => {
                     </label>
                     <MainButton text="Send" type="submit"/>
                 </BookingForm>)}          
-        </Formik>       
-        
+        </Formik>     
     )
 
 }
