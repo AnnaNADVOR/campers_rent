@@ -55,11 +55,8 @@ export const CalendarIcon = styled.svg`
     width: 20px;
     height: 20px; 
     stroke: ${({ theme }) => theme.colors.darkblue}; 
-    fill: none;  
+    fill: none;      
     
-    &:hover{
-       stroke: ${({ theme }) => theme.colors.accentOrangeHover}; 
-    }
 ` 
 export const InputWrapper = styled.div`
     position: relative; 
@@ -75,11 +72,10 @@ export const InputWrapper = styled.div`
         line-height: 20px; 
         color: ${({ theme }) => theme.colors.formText};
         margin-bottom: 14px; 
+    }    
+`
 
-        svg:hover {
-        width: 60px; 
-    }
-    }
-
-    
+export const ErrorMassage = styled.p`
+    font-size: 12px; 
+    color: ${({ theme }) => theme.colors.accentOrange};  
 `

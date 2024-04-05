@@ -31,22 +31,22 @@ const Calendar = () => {
 
     const { setFieldValue } = useFormikContext();
     const [field] = useField("bookingDate");
+    const changeDate = (value) => {
+        setFieldValue(field.name, value);
+    }
   
     return (
         <DatePicker 
             {...field}
             selected={field.value}
-            onChange={(value) => {
-                setFieldValue(field.name, value);
-            }}            
+            onChange={changeDate}            
             minDate={new Date()}
             locale={en}            
             dateFormat={getDateFormat(field.value)}
             onFocus={event => event.target.blur()}
             onKeyDown={event => event.preventDefault()}
-            placeholderText="Booking date" 
-            // required={true}
-            name="bookingDate"
+            placeholderText="Booking date"             
+            name="bookingDate"    
         />
     )
 }

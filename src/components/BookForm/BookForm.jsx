@@ -8,15 +8,15 @@ import {
     Textarea,
     CalendarIcon,
     InputWrapper,
+    ErrorMassage,
 } from './BookForm.styled';
 import MainButton from 'components/Buttons/MainButton/MainButton';
 import Calendar from 'components/Calendar/Calendar';
 
 import sprite from "../../assets/icons/sprite.svg";
-import { useDispatch, useSelector } from 'react-redux';
-// import { addToBooked } from '../../redux/adverts/slice';
+import { useDispatch } from 'react-redux';
 import {bookedVan} from '../../redux/adverts/operations';
-import { selectBooked } from '../../redux/adverts/selectors';
+
 const addFormSchema = Yup.object().shape({
     customerName: Yup.string().required('Name is required'), 
     customerEmail:Yup.string().email('Invalid email').required('Email is required'),  
@@ -65,9 +65,9 @@ const BookForm = ({advertId}) => {
                             as="input"
                             type="text"
                             placeholder="Name"
-                            autoFocus
+                            // autoFocus
                         />
-                        {touched.customerName && errors.customerName ? <p>{errors.customerName}</p> : null}
+                        {touched.customerName && errors.customerName ? <ErrorMassage>{errors.customerName}</ErrorMassage> : null}
                     </label>
                     <label htmlFor='customerEmail'>
                         <Input
@@ -76,19 +76,21 @@ const BookForm = ({advertId}) => {
                             type="email"
                             placeholder="Email"                            
                         />
-                        {touched.customerEmail && errors.customerEmail ? <p>{errors.customerEmail}</p> : null}
+                        {touched.customerEmail && errors.customerEmail ? <ErrorMassage>{errors.customerEmail}</ErrorMassage> : null}
                     </label>
-                    <label htmlFor='bookingDate'>
+                    <label htmlFor='bookingDate'>                        
                         <InputWrapper>
                             <Calendar />
-                            
-                                                          <CalendarIcon>
+                            {/* <button style={{ backgroudColor: "blue", width: "30px", height: "30px", position: "absolute"}}> */}
+                                                        <CalendarIcon>
                                 <use href={`${sprite}#calendar`}></use>
-                            </CalendarIcon>  
+                            </CalendarIcon>      
+                            {/* </button> */}
+
                             
 
                         </InputWrapper>
-                        {touched.bookingDate && errors.bookingDate ? <p>{errors.bookingDate}</p> : null}  
+                        {touched.bookingDate && errors.bookingDate && <ErrorMassage>{errors.bookingDate}</ErrorMassage>}  
                     </label>
                     <label htmlFor='comment'>
                         <Textarea
@@ -97,7 +99,7 @@ const BookForm = ({advertId}) => {
                             type="text"
                             placeholder="Comment"                            
                         />
-                        {touched.comment && errors.comment ? <p>{errors.comment}</p> : null}
+                        {touched.comment && errors.comment ? <ErrorMassage>{errors.comment}</ErrorMassage> : null}
                     </label>
                     <MainButton text="Send" type="submit"/>
                 </BookingForm>)}          
