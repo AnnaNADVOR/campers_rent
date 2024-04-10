@@ -74,8 +74,7 @@ const AdvertDetails = ({ advert }) => {
                     {activeTab === "features" && <FeaturesTab advert={advert} />}
                     {activeTab === "reviews" && <ReviewsTab reviews={advert.reviews} />}         
                     <BookForm advertId={advert._id} />        
-                </TabContainer>    
-                   
+                </TabContainer>   
             </MainInfoContainer>  
            
         </div>

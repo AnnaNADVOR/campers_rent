@@ -5,6 +5,8 @@ import SecondaryButton from "components/Buttons/SecondaryButton/SecondaryButton"
 // import { isLast, selectAdverts } from "../../redux/adverts/selectors";
 import { isLast } from "../../redux/adverts/selectors";
 import { fetchAdverts } from "../../redux/adverts/operations";
+import FilterPanel from "components/FilterPanel/FilterPanel";
+import { Catalog } from "./CatalogPage.styled";
 
 const CatalogPage = () => {
     const [adverts, setAdverts] = useState([]);
@@ -24,12 +26,16 @@ const CatalogPage = () => {
     }
 
     return (
-        <>
+        <Catalog>
+            <FilterPanel />
+            <div style={{width:"70%"}}>
             <AdvertsList adverts={adverts} />
             {!last && (
                <SecondaryButton text="Load more" type="submit" onClick={onLoadMore} />               
-            )}   
-        </>  
+            )}  
+            </div>
+  
+        </Catalog>  
     )
 }
 

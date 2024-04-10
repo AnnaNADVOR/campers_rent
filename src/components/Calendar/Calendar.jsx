@@ -43,8 +43,6 @@ const Calendar = () => {
             minDate={new Date()}
             locale={en}            
             dateFormat={getDateFormat(field.value)}
-            onFocus={event => event.target.blur()}
-            onKeyDown={event => event.preventDefault()}
             placeholderText="Booking date"             
             name="bookingDate"    
         />

@@ -80,15 +80,10 @@ const BookForm = ({advertId}) => {
                     </label>
                     <label htmlFor='bookingDate'>                        
                         <InputWrapper>
-                            <Calendar />
-                            {/* <button style={{ backgroudColor: "blue", width: "30px", height: "30px", position: "absolute"}}> */}
-                                                        <CalendarIcon>
+                            <Calendar />                            
+                            <CalendarIcon>
                                 <use href={`${sprite}#calendar`}></use>
-                            </CalendarIcon>      
-                            {/* </button> */}
-
-                            
-
+                            </CalendarIcon>
                         </InputWrapper>
                         {touched.bookingDate && errors.bookingDate && <ErrorMassage>{errors.bookingDate}</ErrorMassage>}  
                     </label>
