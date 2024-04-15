@@ -1,4 +1,4 @@
-export const LOCATION_OPTIONS = [
+const LOCATION_OPTIONS = [
     { label: "Kyiv", value: "Ukraine, Kyiv" },
     { label: "Lviv", value: "Ukraine, Lviv" },
     { label: "Odesa", value: "Ukraine, Odesa" },
@@ -6,4 +6,6 @@ export const LOCATION_OPTIONS = [
     { label: "Dnipro", value: "Ukraine, Dnipro" },
     { label: "Kharkiv", value: "Ukraine, Kharkiv" },
     { label: "Sumy", value: "Ukraine, Sumy" },
-  ];
+];
+  
+export default LOCATION_OPTIONS;

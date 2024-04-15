@@ -1,90 +1,31 @@
-import Select from 'react-dropdown-select';
-import { useSelector } from 'react-redux';
-import { selectAdverts } from '../../redux/adverts/selectors';
-import { LOCATION_OPTIONS } from 'services/selectLocationOptions';
+import LOCATION_OPTIONS from 'services/selectLocationOptions';
+import EQUIPMENT_OPTIONS from 'services/equipmentFilterOptions';
 import { useState } from 'react';
-import sprite from "../../assets/icons/sprite.svg"
+import LocationFilter from './LocationFilter/LocationFilter';
+import EquipmentFilter from './EquipmentFilter/EquipmentFilter';
 
 const FilterPanel = () => {
 
     const [filterParams, setFilterParams] = useState({});
-    const selectLocation = (values) => {
-        console.log(values)
+    const handleSelectLocation = (values) => {
         setFilterParams(prevParams => ({...prevParams, location: values[0].value}));
     }
 
-    const EQUIPMENT_LABELS = [ 
-        {
-            name: "airConditioner",
-            value: "1",
-            iconHref: `${sprite}#AC`,
-            text: "AC",
-        },
-        {
-            name: "transmission",
-            value: "automatic",
-            iconHref: `${sprite}#transmission`,
-            text: "Automatic",
-        },
-        {
-            name: "kitchen",
-            value: "1",
-            iconHref: `${sprite}#kitchen`,
-            text: "Kitchen",
-        },
-        {
-            name: "TV",
-            value: "1",
-            iconHref: `${sprite}#TV`,
-            text: "TV",
-        },
-        {
-            name: "shower",
-            value: "1",
-            iconHref: `${sprite}#shower`,
-            text: "Shower/WC",
-  },
-    ]
+    const handleSelectEquipment = (event) => {
+        if (event.target.checked) {
+            setFilterParams(prevParams => ({ ...prevParams, [event.target.name]: event.target.value }));
+        } else {
+            setFilterParams(prevPrams => {
+                const { [event.target.name]: _, ...rest } = prevPrams;
+                return {...rest}
+            })            
+        }        
+    }
+    console.log(filterParams)
     return (
         <div> 
-            <label>
-                Location 
-                <Select
-                    options={LOCATION_OPTIONS}
-                    placeholder='Kyiv,Ukraine'
-                    onChange={selectLocation}                    
-                />
-            </label>
-            <p>Filters</p>
-            <fieldset>
-                <legend>Vehicle equipment</legend>
-                
-                {EQUIPMENT_LABELS.map(label => (
-                        <div key={label.text}>
-                         <label htmlFor={label.text}>
-                            <input
-                                type="checkbox"
-                                name={label.text}
-                               
-                            />
-                            <div>
-                                <svg width="32px" height="32px" fill="none" stroke="black">
-                                    <use href={label.iconHref}></use>
-                                </svg>
-                                {label.text}
-                            </div>
-                        </label>
-                        </div>
-                    ))}
-                        
-                       
-                    {/* <label htmlFor='AC'> 
-                        <input type="checkbox" name="AC"/>
-                    </label> */}
-                
-            </fieldset>
-
-            
+            <LocationFilter selectOptions={LOCATION_OPTIONS} changeLocation={handleSelectLocation} />
+            <EquipmentFilter equipment={EQUIPMENT_OPTIONS} selectOption={handleSelectEquipment}/>           
         </div>
     )
 }

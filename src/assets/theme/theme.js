@@ -12,7 +12,9 @@ const theme = {
     },
     borders: {
         mainBorder: "1px solid rgba(16, 24, 40, 0.2)",
+        secondaryBorder: "1px solid rgba(16, 24, 40, 0.1)",
         accentBorder: "5px solid #E44848",
+        accentFilterBorder: "1px solid #E44848",
     }
 }
 
