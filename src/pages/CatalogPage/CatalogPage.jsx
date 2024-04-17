@@ -12,9 +12,10 @@ import { useSearchParams } from 'react-router-dom';
 const CatalogPage = () => {
   const [adverts, setAdverts] = useState([]);
   const [page, setPage] = useState(1);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParam, setSearchParams] = useSearchParams();
   const last = useSelector(isLast);
   const dispatch = useDispatch();
+  console.log(searchParam)
   useEffect(() => {
     dispatch(fetchAdverts({ page: page, limit: 4 })).then(response => {
       setAdverts(prevAdverbs => [...prevAdverbs, ...response.payload]);
