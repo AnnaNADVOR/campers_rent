@@ -1,4 +1,4 @@
-import sprite from "../assets/icons/sprite.svg";
+import sprite from "../../assets/icons/sprite.svg";
 
 const EQUIPMENT_OPTIONS = [ 
         {

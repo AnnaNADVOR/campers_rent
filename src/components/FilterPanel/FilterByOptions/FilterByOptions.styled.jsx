@@ -38,7 +38,8 @@ export const OptionContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  width: 112px;
+  height: 95px;
 `;
 
 export const Label = styled.label`
@@ -53,9 +54,19 @@ export const OptionInfo = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 8px;
-  padding: 17px 18px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
   width: 112px;
   height: 95px;
   border-radius: 10px;
   border: ${({ theme }) => theme.borders.mainBorder};
+`;
+
+export const OptionIcon = styled.svg`
+  width: 32px;
+  height: 32px;
+  fill: none;
+  stroke: ${({ theme }) => theme.colors.darkblue};
 `;
