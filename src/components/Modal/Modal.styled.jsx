@@ -16,7 +16,7 @@ export const Backdrop = styled.div`
 export const ModalContainer = styled.div`
     position: absolute;
     height: 95vh;
-    width: 95vw;
+    width: 40vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
