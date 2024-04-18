@@ -8,7 +8,6 @@ import { addToFavorites, removeFromFavorites }  from "../../../redux/adverts/sli
 import { selectFavorites } from "../../../redux/adverts/selectors";
 
 import {
-    AdvertCard,
     CamperImg,
     CamperImgContainer,
     CamperInfoContainer,
