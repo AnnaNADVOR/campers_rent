@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 
-export const Catalog = styled.div`
+export const Catalog = styled.section`
+padding-top: 60px;
+padding-bottom: 60px;
     display: flex; 
     gap: 64px;
     justify-content: space-between;

@@ -45,7 +45,7 @@ const Advert = ({ advert }) => {
     }
 
     return (
-        <AdvertCard>
+        <>
             <CamperImgContainer>
                 <CamperImg alt={advert.name} src={advert.gallery[0]} />   
             </CamperImgContainer>
@@ -147,7 +147,7 @@ const Advert = ({ advert }) => {
                     <AdvertDetails advert={advert} />
                 </Modal>
             )}            
-        </AdvertCard>
+        </>
     )
 }
 

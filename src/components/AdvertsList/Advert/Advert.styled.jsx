@@ -1,18 +1,18 @@
 import styled from "@emotion/styled";
 
-export const AdvertCard = styled.div`
-    display: flex;
-    justify-content: center;
-    padding: 24px;
-    width: 888px;
-    height: 358px;
-    gap: 24px; 
-    border: 1px solid rgba(16, 24, 40, 0.2);
-    border-radius: 20px;  
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px; 
-`
+// export const AdvertCard = styled.div`
+//     display: flex;
+//     justify-content: flex-start;
+//     padding: 24px;
+//     width: 100%;
+//     min-height: 358px;
+//     gap: 24px; 
+//     border: 1px solid rgba(16, 24, 40, 0.2);
+//     border-radius: 20px;  
+//     font-weight: 400;
+//     font-size: 16px;
+//     line-height: 24px; 
+// `
 
 export const CamperImg = styled.img`
     height: 100%;
@@ -24,7 +24,7 @@ export const CamperImg = styled.img`
 
 export const CamperImgContainer = styled.div`
     width: 290px;
-    height: 310px;    
+    height: 310px;      
 `
 
 export const CamperInfoContainer = styled.div`

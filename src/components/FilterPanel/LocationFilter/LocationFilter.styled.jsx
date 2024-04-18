@@ -13,7 +13,7 @@ export const LocationLabel = styled.label`
 .react-dropdown-select {
         border-radius: 10px;
         padding: 18px 18px 18px 44px;
-        width: 360px;
+        width: 100%;
         border: none; 
         font-weight: 400;
         font-size: 16px;

@@ -1,22 +1,27 @@
-import { NavLink } from "react-router-dom/dist";
+// import { NavLink } from 'react-router-dom/dist';
+import {
+    Nav,
+    NavList,
+    NavListItem,
+    Link
+} from './NavBar.styled';
 
 const NavBar = () => {
-    return (
-        <nav>
-            <ul>
-                <li>
-                    <NavLink to="/">Home</NavLink>    
-                </li>
-                <li>
-                    <NavLink to="/catalog">Catalog</NavLink>    
-                </li>
-                <li>
-                    <NavLink to="/favorites">Favorites</NavLink>    
-                </li>
-            </ul>
-     
-        </nav>
-    )
-}
+   return (
+      <Nav>
+         <NavList>
+            <NavListItem>
+               <Link to="/">Home</Link>
+            </NavListItem>
+            <NavListItem>
+               <Link to="/catalog">Catalog</Link>
+            </NavListItem>
+            <NavListItem>
+               <Link to="/favorites">Favorites</Link>
+            </NavListItem>
+         </NavList>
+      </Nav>
+   );
+};
 
-export default NavBar; 
+export default NavBar;
