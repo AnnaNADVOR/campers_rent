@@ -3,46 +3,76 @@ import { useEffect, useState } from 'react';
 import AdvertsList from 'components/AdvertsList/AdvertsList';
 import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
 // import { isLast, selectAdverts } from "../../redux/adverts/selectors";
-import { isLast } from '../../redux/adverts/selectors';
+import {
+	isLast,
+	selectLoadingAdverts,
+} from '../../redux/adverts/selectors';
 import { fetchAdverts } from '../../redux/adverts/operations';
 import FilterPanel from 'components/FilterPanel/FilterPanel';
 import { Catalog, FilterPart, AdvertsPart } from './CatalogPage.styled';
 import { useSearchParams } from 'react-router-dom';
+import { MagnifyingGlass } from 'react-loader-spinner';
 
 const CatalogPage = () => {
-  const [adverts, setAdverts] = useState([]);
-  const [page, setPage] = useState(1);
-  const [searchParam, setSearchParams] = useSearchParams();
-  const last = useSelector(isLast);
-  const dispatch = useDispatch();
-  console.log(searchParam)
-  useEffect(() => {
-    dispatch(fetchAdverts({ page: page, limit: 4 })).then(response => {
-      setAdverts(prevAdverbs => [...prevAdverbs, ...response.payload]);
-    });
-  }, [dispatch, page]);
+	const [adverts, setAdverts] = useState([]);
+	const [page, setPage] = useState(1);
+	const [searchParams, setSearchParams] = useSearchParams();
+	const last = useSelector(isLast);
+	const loading = useSelector(selectLoadingAdverts);
+	const dispatch = useDispatch();
 
-  const onLoadMore = () => {
-    setPage(prevPage => prevPage + 1);
-  };
+	useEffect(() => {
+		let params = {};
+		for (const [key, value] of searchParams.entries()) {
+			params[key] = value;
+		}
 
-  return (
-    <Catalog>
-      <FilterPart>
-        <FilterPanel getSearchParams={setSearchParams} />
-      </FilterPart>
-      <AdvertsPart>
-        <AdvertsList adverts={adverts} />
-        {!last && (
-          <SecondaryButton
-            text="Load more"
-            type="submit"
-            onClick={onLoadMore}
-          />
-        )}
-      </AdvertsPart>
-    </Catalog>
-  );
+		dispatch(fetchAdverts({ page: page, limit: 4, filterParams: params })).then(
+			response => {
+				setAdverts(prevAdverbs => [...prevAdverbs, ...response.payload]);
+			}
+		);
+	}, [dispatch, page, searchParams]);
+
+	const onLoadMore = () => {
+		setPage(prevPage => prevPage + 1);
+	};
+
+	return (
+		<Catalog>
+			<FilterPart>
+				<FilterPanel
+					setSearchParams={setSearchParams}
+					setAdverts={setAdverts}
+					setPage={setPage}
+				/>
+			</FilterPart>
+			<AdvertsPart>
+				{loading && page === 1 ? (
+					<MagnifyingGlass />
+				) : (
+					<>
+						<AdvertsList adverts={adverts} />
+						{!last && adverts.length > 0 && (
+							<SecondaryButton
+								text="Load more"
+								type="submit"
+								onClick={onLoadMore}
+							/>
+						)}
+					</>
+				)}
+				{/* <AdvertsList adverts={adverts} />
+						{!last && adverts.length > 0 && (
+							<SecondaryButton
+								text="Load more"
+								type="submit"
+								onClick={onLoadMore}
+							/>
+						)} */}
+			</AdvertsPart>
+		</Catalog>
+	);
 };
 
 export default CatalogPage;

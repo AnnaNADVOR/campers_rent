@@ -3,9 +3,9 @@ import { bookedVan, fetchAdverts } from "./operations";
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
-const handlePending = state => {
-  state.isLoading = true;
-};
+// const handlePending = state => {
+//   state.isLoading = true;
+// };
 
 const handleRejected = (state, action) => {
   state.isLoading = false;
@@ -19,7 +19,7 @@ const advertsSlice = createSlice({
       favorites: [],
       booked: [],
       isLast: true,
-      isLoading: false,
+      isLoadingAdverts: false,
       error: null,
     }, 
   reducers: {
@@ -35,16 +35,17 @@ const advertsSlice = createSlice({
   },
     extraReducers: builder => {
         builder 
-          .addCase(fetchAdverts.pending, handlePending)
+          .addCase(fetchAdverts.pending, state => {
+            state.isLoadingAdverts = true;
+          })
           .addCase(fetchAdverts.fulfilled, (state, action) => {
-              // state.advertsList = action.payload;
               state.advertsList = [...state.advertsList, ...action.payload];
               state.isLast = action.payload.length < 4; 
-              state.isLoading = false; 
+              state.isLoadingAdverts = false; 
               state.error = null;                                
             })
         .addCase(fetchAdverts.rejected, handleRejected)
-          .addCase(bookedVan.fulfilled, (state, action) => {
+        .addCase(bookedVan.fulfilled, (state, action) => {
         state.booked.push(action.payload);
       })
             

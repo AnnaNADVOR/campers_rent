@@ -11,7 +11,7 @@ import {
 } from './FilterPaner.styled';
 import MainButton from '../Buttons/MainButton/MainButton';
 
-const FilterPanel = ({ getSearchParams }) => {
+const FilterPanel = ({ setSearchParams, setAdverts, setPage }) => {
   const [filterParams, setFilterParams] = useState({});
   const handleSelectLocation = values => {
     setFilterParams(prevParams => ({
@@ -23,8 +23,8 @@ const FilterPanel = ({ getSearchParams }) => {
   const handleSelectEquipment = event => {
     if (event.target.checked) {
       setFilterParams(prevParams => ({
-        ...prevParams,
-        [event.target.name]: event.target.value,
+        ...prevParams,       
+        [`details[${event.target.name}]`]: event.target.value,           
       }));
     } else {
       setFilterParams(prevPrams => {
@@ -42,7 +42,10 @@ const FilterPanel = ({ getSearchParams }) => {
   };
 
   const handleSubmitForm = event => {
-    getSearchParams({ ...filterParams });
+    event.preventDefault();     
+    setSearchParams({ ...filterParams });
+    setAdverts([]);
+    setPage(1);
   };
 
   return (

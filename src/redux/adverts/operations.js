@@ -3,9 +3,9 @@ import * as advertsAPI from "../advertsAPI";
 
 export const fetchAdverts = createAsyncThunk(
   "adverts/fetchAdverts",
-  async ({page, limit}, { rejectWithValue }) => {
+  async ({ page, limit, filterParams}, { rejectWithValue }) => {
     try {
-      const adverts = await advertsAPI.fetchAdverts(page, limit);
+      const adverts = await advertsAPI.fetchAdverts(page, limit, filterParams);
       return adverts;
     } catch (error) {
       return rejectWithValue(error.message);
