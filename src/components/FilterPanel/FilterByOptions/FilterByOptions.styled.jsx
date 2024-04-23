@@ -8,7 +8,6 @@ export const Fieldset = styled.fieldset`
 export const Legend = styled.legend`
   font-weight: 600;
   font-size: 20px;
-
   color: ${({ theme }) => theme.colors.darkblue};
   margin-bottom: 24px;
 `;
@@ -27,10 +26,12 @@ export const Input = styled.input`
   cursor: pointer;
   width: 112px;
   height: 95px;
+  transition: border ${({ theme }) => theme.transition};
 
   &:checked + div {
-    border: ${({ theme }) => theme.borders.accentFilterBorder};
+    border: ${({ theme }) => theme.borders.accenLighttBorder};
   }
+
 `;
 
 export const OptionContainer = styled.div`

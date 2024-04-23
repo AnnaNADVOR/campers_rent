@@ -2,16 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import AdvertsList from 'components/AdvertsList/AdvertsList';
 import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
-// import { isLast, selectAdverts } from "../../redux/adverts/selectors";
-import {
-	isLast,
-	selectLoadingAdverts,
-} from '../../redux/adverts/selectors';
+import { isLast, selectLoadingAdverts } from '../../redux/adverts/selectors';
 import { fetchAdverts } from '../../redux/adverts/operations';
 import FilterPanel from 'components/FilterPanel/FilterPanel';
 import { Catalog, FilterPart, AdvertsPart } from './CatalogPage.styled';
 import { useSearchParams } from 'react-router-dom';
 import { MagnifyingGlass } from 'react-loader-spinner';
+import ButtonLoader from 'components/Loaders/ButtonLoader';
 
 const CatalogPage = () => {
 	const [adverts, setAdverts] = useState([]);
@@ -21,13 +18,15 @@ const CatalogPage = () => {
 	const loading = useSelector(selectLoadingAdverts);
 	const dispatch = useDispatch();
 
+
 	useEffect(() => {
 		let params = {};
 		for (const [key, value] of searchParams.entries()) {
 			params[key] = value;
 		}
 
-		dispatch(fetchAdverts({ page: page, limit: 4, filterParams: params })).then(
+		dispatch(fetchAdverts({ page: page, limit: 4, filterParams: params }))
+			.then(
 			response => {
 				setAdverts(prevAdverbs => [...prevAdverbs, ...response.payload]);
 			}
@@ -45,6 +44,7 @@ const CatalogPage = () => {
 					setSearchParams={setSearchParams}
 					setAdverts={setAdverts}
 					setPage={setPage}
+					searchParams = {searchParams}
 				/>
 			</FilterPart>
 			<AdvertsPart>
@@ -58,18 +58,16 @@ const CatalogPage = () => {
 								text="Load more"
 								type="submit"
 								onClick={onLoadMore}
+								loader={
+									loading &&
+									page >= 2 && (
+										<ButtonLoader color ="#d84343"/>
+									)
+								}
 							/>
 						)}
 					</>
 				)}
-				{/* <AdvertsList adverts={adverts} />
-						{!last && adverts.length > 0 && (
-							<SecondaryButton
-								text="Load more"
-								type="submit"
-								onClick={onLoadMore}
-							/>
-						)} */}
 			</AdvertsPart>
 		</Catalog>
 	);

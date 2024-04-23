@@ -1,12 +1,11 @@
-import { SecondaryBtn } from "./SecondaryButton.styled";
+import { SecondaryBtn } from './SecondaryButton.styled';
 
+const SecondaryButton = ({ text, type, onClick, loader }) => {
+	return (
+		<SecondaryBtn type={type} onClick={onClick}>	
+			{loader ? loader : text}
+		</SecondaryBtn>
+	);
+};
 
-const SecondaryButton = ({ text, type, onClick }) => {
-    return (
-        <SecondaryBtn type={type} onClick={onClick}>
-            {text}
-        </SecondaryBtn>
-    )
-}
-
-export default SecondaryButton; 
+export default SecondaryButton;

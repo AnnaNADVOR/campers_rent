@@ -3,7 +3,9 @@ import styled from "@emotion/styled";
 export const MainBtn = styled.button`
     width: 166px;
     text-align: center;
-    display: inline-block;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
     border-radius: 200px;
     padding: 16px 40px;
     background-color:${({ theme }) => theme.colors.accentOrange};

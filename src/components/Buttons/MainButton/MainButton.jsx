@@ -1,9 +1,9 @@
 import { MainBtn } from "./MainButton.styled";
 
-const MainButton = ({ text, type, onClick }) => {
+const MainButton = ({ text, type, onClick, loader }) => {
     return (
         <MainBtn type={type} onClick={onClick}>
-            {text}
+            {loader ? loader : text}
         </MainBtn>
     )
 }
