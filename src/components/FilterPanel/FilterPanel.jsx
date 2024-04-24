@@ -12,7 +12,6 @@ import {
 import MainButton from '../Buttons/MainButton/MainButton';
 import { useSelector } from 'react-redux';
 import { selectLoadingAdverts } from '../../redux/adverts/selectors';
-import ButtonLoader from 'components/Loaders/ButtonLoader';
 import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
 
 const FilterPanel = ({
@@ -23,7 +22,6 @@ const FilterPanel = ({
 }) => {
 	const [filterParams, setFilterParams] = useState({});
 	const [checkRadioValue, setCheckRadioValue] = useState('');
-	const loader = useSelector(selectLoadingAdverts);
 	const formRef = useRef();
 	const selectRef = useRef();
 
