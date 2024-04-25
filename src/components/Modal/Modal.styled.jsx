@@ -22,10 +22,11 @@ export const ModalContainer = styled.div`
     transform: translate(-50%, -50%) scale(1);
     background-color: white;
     border-radius: 20px;
-    padding: 40px;
+    padding: 15px;
 
          @media screen and (min-width: 1440px) {
 width: 982px;
+padding: 40px;
          }
 `
 export const CloseButton = styled.button`
