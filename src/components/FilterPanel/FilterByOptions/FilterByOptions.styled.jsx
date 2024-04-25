@@ -7,40 +7,61 @@ export const Fieldset = styled.fieldset`
 
 export const Legend = styled.legend`
   font-weight: 600;
-  font-size: 20px;
+  font-size: 14px;
   color: ${({ theme }) => theme.colors.darkblue};
+  margin-bottom: 14px;
+
+  @media screen and (min-width: 768px) {
+  
+  font-size: 20px;
+
   margin-bottom: 24px;
+  }
 `;
 
 export const InputsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding-top: 24px;
+  gap: 5px;
+  padding-top: 14px;
   border-top: ${({ theme }) => theme.borders.secondaryBorder};
+    @media screen and (min-width: 768px) {
+       padding-top: 24px;
+         gap: 10px;
+    }
 `;
 
 export const Input = styled.input`
   opacity: 0;
   position: absolute;
   cursor: pointer;
-  width: 112px;
-  height: 95px;
+  width: 85px;
+  height: 75px;
   transition: border ${({ theme }) => theme.transition};
 
   &:checked + div {
     border: ${({ theme }) => theme.borders.accenLighttBorder};
   }
 
+   @media screen and (min-width: 768px) { 
+      width: 112px;
+  height: 95px;
+   }
+
 `;
 
-export const OptionContainer = styled.div`
+export const OptionContainer = styled.ul`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 112px;
+  width: 85px;
+  height: 75px;
+
+     @media screen and (min-width: 768px) { 
+      width: 112px;
   height: 95px;
+   }
 `;
 
 export const Label = styled.label`
@@ -54,20 +75,34 @@ export const OptionInfo = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 8px;
+  gap: 3px;
   text-align: center;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 20px;
-  width: 112px;
-  height: 95px;
+  width: 85px;
+  height: 75px;
   border-radius: 10px;
   border: ${({ theme }) => theme.borders.mainBorder};
+
+       @media screen and (min-width: 768px) { 
+      width: 112px;
+  height: 95px;
+   font-size: 16px;
+   gap: 8px;
+  
+   }
 `;
 
 export const OptionIcon = styled.svg`
-  width: 32px;
-  height: 32px;
+  width: 19px;
+  height: 19px;
   fill: none;
   stroke: ${({ theme }) => theme.colors.darkblue};
+
+  @media screen and (min-width: 768px) {
+      width: 32px;
+  height: 32px;
+   }
+
 `;

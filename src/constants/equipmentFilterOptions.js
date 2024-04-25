@@ -1,4 +1,4 @@
-import sprite from "../../assets/icons/sprite.svg";
+import sprite from "../assets/icons/sprite.svg";
 
 const EQUIPMENT_OPTIONS = [ 
         {
@@ -33,4 +33,4 @@ const EQUIPMENT_OPTIONS = [
         },        
 ]
     
-export default EQUIPMENT_OPTIONS; 
+export { EQUIPMENT_OPTIONS }; 

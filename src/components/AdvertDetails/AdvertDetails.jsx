@@ -53,7 +53,6 @@ const AdvertDetails = ({ advert }) => {
         </Location>
       </AdditionalInfo>
       <MainText>€ {advert.price.toFixed(2)}</MainText>
-
       <MainInfoContainer>
         <CamperGallery>
           <CamperImgContainer>
@@ -67,7 +66,6 @@ const AdvertDetails = ({ advert }) => {
           </CamperImgContainer>
         </CamperGallery>
         <Description>{advert.description}</Description>
-
         <TabsList>
           <li>
             <Tab
@@ -90,7 +88,6 @@ const AdvertDetails = ({ advert }) => {
             </Tab>
           </li>
         </TabsList>
-
         <TabContainer>
           {activeTab === 'features' && <FeaturesTab advert={advert} />}
           {activeTab === 'reviews' && <ReviewsTab reviews={advert.reviews} />}

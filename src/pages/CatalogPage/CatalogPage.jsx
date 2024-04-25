@@ -5,10 +5,11 @@ import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton'
 import { isLast, selectLoadingAdverts } from '../../redux/adverts/selectors';
 import { fetchAdverts } from '../../redux/adverts/operations';
 import FilterPanel from 'components/FilterPanel/FilterPanel';
-import { Catalog, FilterPart, AdvertsPart } from './CatalogPage.styled';
+import { CatalogSection , FilterPart, AdvertsPart } from './CatalogPage.styled';
 import { useSearchParams } from 'react-router-dom';
 import { MagnifyingGlass } from 'react-loader-spinner';
 import ButtonLoader from 'components/Loaders/ButtonLoader';
+import Container from 'components/Container/Container';
 
 const CatalogPage = () => {
 	const [adverts, setAdverts] = useState([]);
@@ -38,7 +39,8 @@ const CatalogPage = () => {
 	};
 
 	return (
-		<Catalog>
+		<CatalogSection>
+			<Container>
 			<FilterPart>
 				<FilterPanel
 					setSearchParams={setSearchParams}
@@ -68,8 +70,9 @@ const CatalogPage = () => {
 						)}
 					</>
 				)}
-			</AdvertsPart>
-		</Catalog>
+				</AdvertsPart>
+				</Container>
+		</CatalogSection>
 	);
 };
 

@@ -1,43 +1,54 @@
-import styled from "@emotion/styled"; 
+import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom/dist';
-  
-export const Nav = styled.nav`
-    /* display: flex;
-    justify-content: center; 
-    align-items: center;    */
-    margin-left: 50px; 
 
-`
+export const Nav = styled.nav`
+	@media screen and (min-width: 768px) {
+		margin-left: 50px;
+	}
+`;
 
 export const NavList = styled.ul`
-display: flex; 
-
-`
+	display: flex;
+`;
 
 export const NavListItem = styled.li`
-&:not(:last-child) {
-    margin-right: 50px; 
-}
-`
+	&:not(:last-child) {
+		margin-right: 20px;
+	}
+
+	@media screen and (min-width: 768px) {
+		&:not(:last-child) {
+			margin-right: 50px;
+		}
+	}
+`;
 
 export const Link = styled(NavLink)`
-display: block;
-position: relative;
-  padding-top: 30px; 
-    padding-bottom: 30px; 
-    font-size:14px;
-    font-weight: 500; 
-    line-height: 1.2;
-    color: ${({ theme }) => theme.colors.darkblue};
+	display: block;
+	position: relative;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.2;
+	color: ${({ theme }) => theme.colors.darkblue};
 
-    &.active:after {
+	&.active:after {
+		position: absolute;
+		top: 53px;
+		display: block;
+		content: '';
+		width: 100%;
+		border-bottom: 5px solid #e44848;
+		border-radius: 5px;
+	}
 
-    position: absolute;
-    top: 73px;
-    display: block;
-    content: "";
-    width: 100%;
-    border-bottom: 5px solid #E44848;
-    border-radius: 5px;
-    }
-`
+	@media screen and (min-width: 768px) {
+		padding-top: 30px;
+		padding-bottom: 30px;
+
+		&.active:after {
+			top: 73px;
+		}
+	}
+`;

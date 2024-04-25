@@ -16,13 +16,17 @@ export const Backdrop = styled.div`
 export const ModalContainer = styled.div`
     position: absolute;
     height: 95vh;
-    width: 982px;
+    width: 90vw;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
     background-color: white;
     border-radius: 20px;
     padding: 40px;
+
+         @media screen and (min-width: 1440px) {
+width: 982px;
+         }
 `
 export const CloseButton = styled.button`
    position: absolute;

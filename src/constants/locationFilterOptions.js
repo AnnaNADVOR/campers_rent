@@ -8,4 +8,4 @@ const LOCATION_OPTIONS = [
     { label: "Sumy", value: "Ukraine, Sumy" },
 ];
   
-export default LOCATION_OPTIONS;
+export { LOCATION_OPTIONS };

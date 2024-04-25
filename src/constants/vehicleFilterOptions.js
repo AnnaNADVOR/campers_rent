@@ -1,4 +1,4 @@
-import sprite from '../../assets/icons/sprite.svg';
+import sprite from '../assets/icons/sprite.svg';
 
 const VEHICLE_OPTIONS = [
   {
@@ -23,4 +23,4 @@ const VEHICLE_OPTIONS = [
   },
 ];
 
-export default VEHICLE_OPTIONS;
+export {VEHICLE_OPTIONS};

@@ -9,7 +9,7 @@ import {
 	OptionIcon,
 } from './FilterByOptions.styled';
 
-export const FilterByOption = ({
+export const FilterByOptions = ({
 	options,
 	selectOption,
 	title,
@@ -22,7 +22,8 @@ export const FilterByOption = ({
 			<Legend>{title}</Legend>
 			<InputsContainer>
 				{options.map(option => (
-					<OptionContainer key={option.text}>
+					<OptionContainer >
+						<li key={option.text}>
 						<Label htmlFor={option.name}>
 							<Input
 								onChange={selectOption}
@@ -37,7 +38,9 @@ export const FilterByOption = ({
 								</OptionIcon>
 								{option.text}
 							</OptionInfo>
-						</Label>
+						</Label>	
+						</li>
+						
 					</OptionContainer>
 				))}
 			</InputsContainer>
@@ -45,4 +48,4 @@ export const FilterByOption = ({
 	);
 };
 
-export default FilterByOption;
+export default FilterByOptions;

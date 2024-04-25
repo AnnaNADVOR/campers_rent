@@ -2,8 +2,7 @@ import NavBar from 'components/NavBar/NavBar';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import {
-	Header,
-	Container,
+	Header,	
 	HeaderContainer,
 	LogoIcon,
 	Logo,
@@ -24,10 +23,8 @@ const Layout = () => {
 				</HeaderContainer>
 			</Header>
 			<main>
-				<Suspense>
-					<Container>
-						<Outlet />
-					</Container>
+				<Suspense>					
+					<Outlet />					
 				</Suspense>
 			</main>
 		</>

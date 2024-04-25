@@ -1,9 +1,9 @@
-import { Container } from 'components/Layout/Layout.styled';
+import  Container  from '../../components/Container/Container';
 import sprite from '../../assets/icons/sprite.svg';
 import {
   Hero,
   HeroTitle,
-  Advantages,
+  AdvantagesSection,
   AdvantagesTitle,
   AdvantagesList,
   AdvantageItem,
@@ -15,9 +15,11 @@ const HomePage = () => {
   return (
     <>
       <Hero>
-        <HeroTitle>The best solutions for your travels</HeroTitle>
+        <Container>
+          <HeroTitle>The best solutions for your travels</HeroTitle>
+        </Container>        
       </Hero>
-      <Advantages>
+      <AdvantagesSection>
         <Container>
           <AdvantagesTitle>Our advantages</AdvantagesTitle>
           <AdvantagesList>
@@ -59,7 +61,7 @@ const HomePage = () => {
             </AdvantageItem>
           </AdvantagesList>
         </Container>
-      </Advantages>
+      </AdvantagesSection>
     </>
   );
 };

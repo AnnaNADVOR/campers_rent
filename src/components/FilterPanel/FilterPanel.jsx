@@ -1,18 +1,20 @@
 import { useRef, useState } from 'react';
-import LOCATION_OPTIONS from '../../services/filterOptions/selectLocationOptions';
-import EQUIPMENT_OPTIONS from '../../services/filterOptions/equipmentFilterOptions';
-import VEHICLE_OPTIONS from '../../services/filterOptions/vehicleFilterOptions';
+import {
+	LOCATION_OPTIONS,
+	EQUIPMENT_OPTIONS,
+	VEHICLE_OPTIONS,
+} from '../../constants/index';
 import LocationFilter from './LocationFilter/LocationFilter';
-import FilterByOption from './FilterByOptions/FilterByOptions';
+import FilterByOptions from './FilterByOptions/FilterByOptions';
+import MainButton from '../Buttons/MainButton/MainButton';
+import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
 import {
 	FilterEquipmentContainer,
 	FilterFormContainer,
 	FilterPanelContainer,
+	ButtonsList,
 } from './FilterPaner.styled';
-import MainButton from '../Buttons/MainButton/MainButton';
-import { useSelector } from 'react-redux';
-import { selectLoadingAdverts } from '../../redux/adverts/selectors';
-import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
+
 
 const FilterPanel = ({
 	setSearchParams,
@@ -111,7 +113,7 @@ const FilterPanel = ({
 				/>
 				<FilterEquipmentContainer>
 					Filters
-					<FilterByOption
+					<FilterByOptions
 						title="Vehicle equipment"
 						options={EQUIPMENT_OPTIONS}
 						selectOption={handleSelectEquipment}
@@ -119,7 +121,7 @@ const FilterPanel = ({
 					/>
 				</FilterEquipmentContainer>
 				<FilterFormContainer>
-					<FilterByOption
+					<FilterByOptions
 						title="Vehicle type"
 						options={VEHICLE_OPTIONS}
 						selectOption={handleSelectVehicleForm}
@@ -130,9 +132,12 @@ const FilterPanel = ({
 				</FilterFormContainer>
 			</FilterPanelContainer>
 			{Object.keys(filterParams).length > 0 && (
-				<ul>
+				<ButtonsList>
 					<li>
-						<MainButton text="Search" type="submit" />{' '}
+						<MainButton
+							text="Search"
+							type="submit"
+						/>
 					</li>
 					<li>
 						<SecondaryButton
@@ -141,7 +146,7 @@ const FilterPanel = ({
 							onClick={handleResetClick}
 						/>
 					</li>
-				</ul>
+				</ButtonsList>
 			)}
 		</form>
 	);
