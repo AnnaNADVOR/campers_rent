@@ -38,13 +38,11 @@ export const FilterFormContainer = styled.div`
 
 export const ButtonsList = styled.ul`
 	display: flex;
-	align-items: center;
-	flex-direction: column;
+	flex-direction: row;
+	justify-content: space-between;
 	gap: 10px;
 
 	@media screen and (min-width: 768px) {
-		flex-direction: row;
-		justify-content: space-between;
 		gap: 20px;
 	}
 `;

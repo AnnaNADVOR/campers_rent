@@ -7,7 +7,7 @@ export const LoaderContainer = styled.div`
 	align-items: center;
 	gap: 20px;
 	font-weight: 400;
-	font-size: 24px;
+	font-size: 16px;
 	line-height: 20px;
 	color: ${({ theme }) => theme.colors.darkblue};
 	margin-top: auto;

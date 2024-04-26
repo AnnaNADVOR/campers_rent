@@ -18,6 +18,7 @@ export const CatalogContainer = styled.div`
 }
 `
 export const FilterPart = styled.div`
+margin-bottom: 20px; 
 
 	@media screen and (min-width: 1440px) {
 		display: flex;

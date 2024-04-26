@@ -11,7 +11,7 @@ const MainLoader = () => {
                 height='100'
                 width='100'
             />
-            Wait a moment... 
+            Search... 
         </LoaderContainer>
     )
 }
