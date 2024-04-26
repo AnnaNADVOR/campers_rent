@@ -1,19 +1,5 @@
 import styled from '@emotion/styled';
 
-// export const AdvertCard = styled.div`
-//     display: flex;
-//     justify-content: flex-start;
-//     padding: 24px;
-//     width: 100%;
-//     min-height: 358px;
-//     gap: 24px;
-//     border: 1px solid rgba(16, 24, 40, 0.2);
-//     border-radius: 20px;
-//     font-weight: 400;
-//     font-size: 16px;
-//     line-height: 24px;
-// `
-
 export const CamperImg = styled.img`
 	height: 100%;
 	width: 100%;
@@ -28,8 +14,11 @@ export const CamperImgContainer = styled.div`
 	align-self: stretch;
 
 	@media screen and (min-width: 768px) {
-		width: 290px;
-		height: 310px;
+		width: 40%;
+	}
+
+	@media screen and (min-width: 1440px) {
+		width: 30%;
 	}
 `;
 
@@ -37,31 +26,26 @@ export const CamperInfoContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+
 	@media screen and (min-width: 768px) {
-		width: 526px;
+		width: 60%;
+	}
+
+	@media screen and (min-width: 1440px) {
+		width: 70%;
 	}
 `;
 
 export const Title = styled.p`
 	font-weight: 600;
-	font-size: 24px;
+	font-size: 16px;
 	line-height: 30px;
 	color: ${({ theme }) => theme.colors.darkblue};
+
+	@media screen and (min-width: 1440px) {
+		font-size: 24px;
+	}
 `;
-
-// export const AddToFavoriteBtn = styled.button`
-//     width: 24px;
-//     height: 24px;
-//     border: none;
-//     background-color: transparent;
-
-//     svg {
-//         width: 24px;
-//         height: 24px;
-//         fill: none;
-//         stroke:${({ theme }) => theme.colors.darkblue};
-//     }
-// `
 
 export const MainInfo = styled.div`
 	display: flex;
@@ -80,7 +64,11 @@ export const InfoContainer = styled.div`
 export const AdditionalInfo = styled.div`
 	display: inline-flex;
 	gap: 16px;
-	margin-bottom: 24px;
+	margin-bottom: 14px;
+
+	@media screen and (min-width: 1440px) {
+		margin-bottom: 24px;
+	}
 `;
 
 export const Rating = styled.div`
@@ -113,6 +101,7 @@ export const Location = styled.div`
 		stroke: ${({ theme }) => theme.colors.darkblue};
 	}
 `;
+
 export const Address = styled.address`
 	font-style: normal;
 `;
@@ -122,28 +111,35 @@ export const Description = styled.p`
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 1;
 	overflow: hidden;
-	margin-bottom: 24px;
+	margin-bottom: 14px;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 24px;
 	color: ${({ theme }) => theme.colors.gray};
 
-    @media screen and (min-width: 768px) {
-        font-size: 16px;
-    }
+	@media screen and (min-width: 768px) {
+		font-size: 16px;
+	}
 
+	@media screen and (min-width: 1440px) {
+		margin-bottom: 24px;
+	}
 `;
 
 export const DetailsList = styled.ul`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
-	margin-bottom: 24px;
+	margin-bottom: 14px;
+
+	@media screen and (min-width: 1440px) {
+		margin-bottom: 24px;
+	}
 `;
 
 export const DetailItem = styled.li`
 	display: flex;
-   	justify-content: center;
+	justify-content: center;
 	align-items: center;
 	gap: 8px;
 	min-width: 40px;
@@ -161,9 +157,14 @@ export const DetailItem = styled.li`
 	}
 
 	@media screen and (min-width: 768px) {
-		font-size: 16px;
+		font-size: 14px;
 		min-width: 87px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		font-size: 16px;
 		padding: 12px 18px;
+
 		svg {
 			width: 20px;
 			height: 20px;

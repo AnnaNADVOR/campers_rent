@@ -1,14 +1,20 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import sprite from '../../../assets/icons/sprite.svg';
+
+import sprite from '../../assets/icons/sprite.svg';
 import capitalize from 'services/capitalize';
+
 import MainButton from 'components/Buttons/MainButton/MainButton';
+import AddToFavoriteButton from 'components/Buttons/AddToFavoriteButton/AddToFavoriteButton';
+import Modal from 'components/Modal/Modal';
+import AdvertDetails from 'components/AdvertDetails/AdvertDetails';
+
 import {
 	addToFavorites,
 	removeFromFavorites,
-} from '../../../redux/adverts/slice';
-import { selectFavorites } from '../../../redux/adverts/selectors';
+} from '../../redux/adverts/slice';
+import { selectFavorites } from '../../redux/adverts/selectors';
 
 import {
 	CamperImg,
@@ -26,9 +32,6 @@ import {
 	DetailsList,
 	DetailItem,
 } from './Advert.styled';
-import AddToFavoriteButton from 'components/Buttons/AddToFavoriteButton/AddToFavoriteButton';
-import Modal from 'components/Modal/Modal';
-import AdvertDetails from 'components/AdvertDetails/AdvertDetails';
 
 const Advert = ({ advert }) => {
 	const [showModal, setShowModal] = useState(false);

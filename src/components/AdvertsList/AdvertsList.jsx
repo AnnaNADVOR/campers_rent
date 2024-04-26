@@ -1,4 +1,4 @@
-import Advert from "./Advert/Advert";
+import Advert from "../Advert/Advert";
 import {
     List,
     AdvertItem,

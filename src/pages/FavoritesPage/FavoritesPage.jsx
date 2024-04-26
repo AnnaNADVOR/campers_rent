@@ -13,7 +13,12 @@ const FavoritesPage = () => {
 				{favorites.length ? (
 					<AdvertsList adverts={favorites} />
 				) : (
-					<DefaultInfo>No</DefaultInfo>
+					<DefaultInfo>
+						<p>
+							You have not yet added any ad to your favorites. Add the ad to
+							your favorites for easier access in the future.
+						</p>
+					</DefaultInfo>
 				)}
 			</Container>
 		</FavoritesSection>

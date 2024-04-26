@@ -18,6 +18,7 @@ import {
 	AdvertsPart,
 	CatalogContainer,
 } from './CatalogPage.styled';
+import MainLoader from 'components/Loaders/MainLoader/MainLoader';
 
 
 const CatalogPage = () => {
@@ -27,7 +28,6 @@ const CatalogPage = () => {
 	const last = useSelector(isLast);
 	const loading = useSelector(selectLoadingAdverts);
 	const dispatch = useDispatch();
-
 
 	useEffect(() => {
 		let params = {};
@@ -61,7 +61,8 @@ const CatalogPage = () => {
 			</FilterPart>
 			<AdvertsPart>
 				{loading && page === 1 ? (
-					<MagnifyingGlass />
+							// <MagnifyingGlass />
+							<MainLoader/>
 				) : (
 					<>
 						<AdvertsList adverts={adverts} />

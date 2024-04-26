@@ -2,11 +2,13 @@ import styled from '@emotion/styled';
 
 export const List = styled.ul`
 	display: flex;
-	flex-direction: column;
+	flex-direction: column; 
 	gap: 32px;
+	width: 100%; 
 
 	@media screen and (min-width: 768px) { 
-		
+		flex-direction: row;
+		flex-wrap: wrap;
 	}
 `;
 
@@ -24,7 +26,7 @@ export const AdvertItem = styled.li`
 	line-height: 24px;
 
 	@media screen and (min-width: 768px) {
-		justify-content: space-between;
+		
 		flex-direction: row;
 		padding: 24px;
 	}
