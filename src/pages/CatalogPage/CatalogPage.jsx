@@ -1,15 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import AdvertsList from 'components/AdvertsList/AdvertsList';
-import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
-import { isLast, selectLoadingAdverts } from '../../redux/adverts/selectors';
-import { fetchAdverts } from '../../redux/adverts/operations';
-import FilterPanel from 'components/FilterPanel/FilterPanel';
-import { CatalogSection , FilterPart, AdvertsPart } from './CatalogPage.styled';
 import { useSearchParams } from 'react-router-dom';
 import { MagnifyingGlass } from 'react-loader-spinner';
+
+import AdvertsList from 'components/AdvertsList/AdvertsList';
+import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
+import FilterPanel from 'components/FilterPanel/FilterPanel';
 import ButtonLoader from 'components/Loaders/ButtonLoader';
 import Container from 'components/Container/Container';
+
+import { isLast, selectLoadingAdverts } from '../../redux/adverts/selectors';
+import { fetchAdverts } from '../../redux/adverts/operations';
+
+import {
+	CatalogSection,
+	FilterPart,
+	AdvertsPart,
+	CatalogContainer,
+} from './CatalogPage.styled';
+
 
 const CatalogPage = () => {
 	const [adverts, setAdverts] = useState([]);
@@ -41,6 +50,7 @@ const CatalogPage = () => {
 	return (
 		<CatalogSection>
 			<Container>
+				<CatalogContainer>			
 			<FilterPart>
 				<FilterPanel
 					setSearchParams={setSearchParams}
@@ -70,7 +80,8 @@ const CatalogPage = () => {
 						)}
 					</>
 				)}
-				</AdvertsPart>
+					</AdvertsPart>
+					</CatalogContainer>
 				</Container>
 		</CatalogSection>
 	);

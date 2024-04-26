@@ -118,9 +118,17 @@ export const Description = styled.p`
 
 export const MainInfoContainer = styled.div`
 	overflow-y: auto;
-	max-height: calc(100vh - 270px);
+	max-height: calc(100vh - 250px);
 	margin-top: 24px;
 	padding-right: 16px;
+
+	@media screen and (min-width: 768px) {
+		max-height: calc(100vh - 220px);
+	}
+
+	@media screen and (min-width: 1440px) {
+		max-height: calc(100vh - 270px);
+	}
 `;
 
 export const TabsList = styled.ul`

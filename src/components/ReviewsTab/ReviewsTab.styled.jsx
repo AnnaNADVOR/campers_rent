@@ -1,8 +1,14 @@
 import styled from "@emotion/styled";
 
 export const TabContainer = styled.div`
-    /* width: 430px;     */
-    width: 47%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	@media screen and (min-width: 768px) {
+		gap: 44px;
+		width: 47%;
+	}
 `
 
 export const ReviewsItem = styled.li`
@@ -46,4 +52,13 @@ export const RatingList = styled.ul`
     justify-content: center;
     align-items: center; 
     gap: 4px;    
+`
+
+export const ReviewText = styled.p`
+font-weight: 400;
+font-size: 16px;
+
+ line-height: 24px; 
+
+color: ${({ theme }) => theme.colors.gray};
 `

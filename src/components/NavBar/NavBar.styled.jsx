@@ -35,12 +35,14 @@ export const Link = styled(NavLink)`
 
 	&.active:after {
 		position: absolute;
-		top: 53px;
+		top: 55px;
 		display: block;
 		content: '';
 		width: 100%;
-		border-bottom: 5px solid #e44848;
-		border-radius: 5px;
+		height: 3px;
+		background-color: ${({ theme }) => theme.colors.accentOrange};
+
+		border-radius: 3px;
 	}
 
 	@media screen and (min-width: 768px) {
@@ -48,7 +50,7 @@ export const Link = styled(NavLink)`
 		padding-bottom: 30px;
 
 		&.active:after {
-			top: 73px;
+			top: 75px;
 		}
 	}
 `;

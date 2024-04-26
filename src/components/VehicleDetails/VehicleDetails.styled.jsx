@@ -22,7 +22,7 @@ export const List = styled.ul`
 	color: ${({ theme }) => theme.colors.darkblue};
 	gap: 14px;
 	padding-top: 24px;
-	border-top: ${({ theme }) => theme.borders.mainBorder};
+	border-top: ${({ theme }) => theme.borders.secondaryBorder};
 
     @media screen and (min-width: 768px) {
 		font-size: 18px;

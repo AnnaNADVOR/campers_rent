@@ -24,6 +24,10 @@ export const ModalContainer = styled.div`
     border-radius: 20px;
     padding: 15px;
 
+@media screen and (min-width: 768px) { 
+    width: 680px;
+    padding: 20px;
+}
          @media screen and (min-width: 1440px) {
 width: 982px;
 padding: 40px;
@@ -47,6 +51,11 @@ export const CloseIcon = styled.svg`
     stroke: ${({ theme }) => theme.colors.darkblue};
     width: 18px;
     height: 18px;
-    transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: stroke ${({ theme }) => theme.transition};
+
+    &:hover,
+    &:focus {
+        stroke: ${({ theme }) => theme.colors.accentOrangeHover};
+    }
 `
 

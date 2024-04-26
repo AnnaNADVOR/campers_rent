@@ -4,13 +4,16 @@ export const List = styled.ul`
 	display: flex;
 	flex-direction: column;
 	gap: 32px;
+
+	@media screen and (min-width: 768px) { 
+		
+	}
 `;
+
 export const AdvertItem = styled.li`
 	flex-direction: column;
-
 	align-items: center;
 	display: flex;
-
 	padding: 14px;
 	width: 100%;
 	gap: 24px;
