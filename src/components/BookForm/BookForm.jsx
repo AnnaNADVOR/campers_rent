@@ -1,5 +1,14 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Report } from 'notiflix/build/notiflix-report-aio';
+import sprite from '../../assets/icons/sprite.svg';
+import MainButton from 'components/Buttons/MainButton/MainButton';
+import Calendar from 'components/Calendar/Calendar';
+
+import { useDispatch } from 'react-redux';
+import { bookedVan } from '../../redux/adverts/operations';
+
 import {
 	FormTitle,
 	FormInfo,
@@ -10,12 +19,6 @@ import {
 	CalendarWrapper,
 	ErrorMassage,
 } from './BookForm.styled';
-import MainButton from 'components/Buttons/MainButton/MainButton';
-import Calendar from 'components/Calendar/Calendar';
-
-import sprite from '../../assets/icons/sprite.svg';
-import { useDispatch } from 'react-redux';
-import { bookedVan } from '../../redux/adverts/operations';
 
 const addFormSchema = Yup.object().shape({
 	customerName: Yup.string().required('Name is required'),
@@ -47,7 +50,33 @@ const BookForm = ({ advertId }) => {
 		).then(action => {
 			if (action.type === 'adverts/bookedVan/fulfilled') {
 				actions.resetForm();
+				Notify.success('Form submitted successfully!', {
+					fontFamily: 'inherit',
+					borderRadius: '10px',
+					success: {
+						background: '#F2F4F7',
+						textColor: '#101828',
+						notiflixIconColor: '#00A36C',
+					},
+				});
 				window.location.reload();
+			}
+
+			if (action.type === 'adverts/bookedVan/rejected') {
+				Report.failure('Try again!', `${action.payload}`, 'OK', {
+					fontFamily: 'inherit',
+					borderRadius: '10px',
+					svgSize: '90px',
+					backgroundColor: '#F7F7F7',
+					failure: {
+						svgColor: '#E44848',
+						buttonBackground: '#E44848',
+						titleColor: '#101828',
+						messageColor: '#475467',
+						buttonColor: '#F7F7F7',
+						backOverlayColor: 'rgba(17, 18, 19, 0.4)',
+					},
+				});			
 			}
 		});
 	};
@@ -67,8 +96,7 @@ const BookForm = ({ advertId }) => {
 							name="customerName"
 							as="input"
 							type="text"
-							placeholder="Name"
-							// autoFocus
+							placeholder="Name"							
 						/>
 						{touched.customerName && errors.customerName ? (
 							<ErrorMassage>{errors.customerName}</ErrorMassage>

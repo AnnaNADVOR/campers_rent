@@ -3,10 +3,6 @@ import { bookedVan, fetchAdverts } from './operations';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
-// const handlePending = state => {
-//   state.isLoading = true;
-// };
-
 const handleRejected = (state, action) => {
 	state.isLoading = false;
 	state.error = action.payload;
@@ -19,8 +15,10 @@ const advertsSlice = createSlice({
 		favorites: [],
 		booked: [],
 		isLast: true,
-		isLoadingAdverts: false,
-		error: null,
+		isFetchLoading: false,
+		isBookedLoading: false,
+		fetchError: null,
+		bookedError: null,
 	},
 	reducers: {
 		addToFavorites: (state, action) => {
@@ -31,24 +29,35 @@ const advertsSlice = createSlice({
 				advert => advert._id !== action.payload._id
 			);
 		},
-		// addToBooked: (state, action) => {
-		//   state.booked.push(action.payload);
-		// }
 	},
 	extraReducers: builder => {
 		builder
 			.addCase(fetchAdverts.pending, state => {
-				state.isLoadingAdverts = true;
+				state.isFetchLoading = true;
 			})
 			.addCase(fetchAdverts.fulfilled, (state, action) => {
 				state.advertsList = [...action.payload];
 				state.isLast = action.payload.length < 4;
-				state.isLoadingAdverts = false;
-				state.error = null;
+				state.isFetchLoading = false;
+				state.fetchError = null;
 			})
-			.addCase(fetchAdverts.rejected, handleRejected)
+			.addCase(fetchAdverts.rejected, (state, action) => {
+				state.isFetchLoading = false;
+				state.fetchError = action.payload;
+			})
+
+
+			.addCase(bookedVan.pending, state => {
+				state.isBookedLoading = true;
+			})
 			.addCase(bookedVan.fulfilled, (state, action) => {
 				state.booked.push(action.payload);
+				state.isBookedLoading = false;
+				state.bookedError = null;
+			})
+			.addCase(bookedVan.rejected, (state, action) => {
+				state.isBookedLoading = false;
+				state.bookedError = action.payload;
 			});
 	},
 });
@@ -58,10 +67,10 @@ const persistConfig = {
 	storage,
 	whitelist: ['favorites'],
 };
+
 export const advertsReducer = persistReducer(
 	persistConfig,
 	advertsSlice.reducer
 );
 export const addToFavorites = advertsSlice.actions.addToFavorites;
 export const removeFromFavorites = advertsSlice.actions.removeFromFavorites;
-// export const addToBooked  = advertsSlice.actions.addToBooked;

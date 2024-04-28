@@ -5,7 +5,7 @@ import {
 	OptionContainer,
 	Label,
 	OptionInfo,
-	InputsContainer,
+	InputsList,
 	OptionIcon,
 } from './FilterByOptions.styled';
 
@@ -20,10 +20,10 @@ export const FilterByOptions = ({
 	return (
 		<Fieldset>
 			<Legend>{title}</Legend>
-			<InputsContainer>
+			<InputsList>
 				{options.map(option => (
-					<OptionContainer >
-						<li key={option.text}>
+					<OptionContainer key={option.text}>
+						
 						<Label htmlFor={option.name}>
 							<Input
 								onChange={selectOption}
@@ -38,12 +38,10 @@ export const FilterByOptions = ({
 								</OptionIcon>
 								{option.text}
 							</OptionInfo>
-						</Label>	
-						</li>
-						
+						</Label>						
 					</OptionContainer>
 				))}
-			</InputsContainer>
+			</InputsList>
 		</Fieldset>
 	);
 };

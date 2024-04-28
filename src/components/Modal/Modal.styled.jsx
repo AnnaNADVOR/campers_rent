@@ -9,7 +9,7 @@ export const Backdrop = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: rgba(137, 137, 137, 0.2);
+	background-color: ${({ theme }) => theme.colors.overlayBack};
 	z-index: 1200;
 `;
 

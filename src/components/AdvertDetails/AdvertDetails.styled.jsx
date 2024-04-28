@@ -85,7 +85,6 @@ export const CamperImgContainer = styled.li`
 	@media screen and (min-width: 768px) {
 		width: calc(100% / 3);
 		height: 310px;
-
 		display: block;
 	}
 `;
@@ -121,6 +120,13 @@ export const MainInfoContainer = styled.div`
 	max-height: calc(100vh - 250px);
 	margin-top: 24px;
 	padding-right: 16px;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+		border-radius: 7px;
+		height: 264px;
+		background: #d9d9d9;
+	}
 
 	@media screen and (min-width: 768px) {
 		max-height: calc(100vh - 220px);
@@ -172,7 +178,6 @@ export const TabContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 14px;
-
 
 	@media screen and (min-width: 768px) {
 		justify-content: space-between;

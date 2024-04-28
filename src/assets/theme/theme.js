@@ -9,6 +9,7 @@ const theme = {
 		milky: '#F7F7F7',
 		primaryWhite: '#fff',
 		formText: 'rgba(16, 24, 40, 0.6)',
+		overlayBack: 'rgba(17, 18, 19, 0.4)'
 	},
 	borders: {
 		mainBorder: '1px solid rgba(16, 24, 40, 0.2)',

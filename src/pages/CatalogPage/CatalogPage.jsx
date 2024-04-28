@@ -10,8 +10,8 @@ import Container from 'components/Container/Container';
 
 import {
 	isLast,
-	selectLoadingAdverts,
-	selectError,
+	selectFetchLoading,
+	selectFetchError,
 } from '../../redux/adverts/selectors';
 import { fetchAdverts } from '../../redux/adverts/operations';
 
@@ -29,8 +29,8 @@ const CatalogPage = () => {
 	const [page, setPage] = useState(1);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const last = useSelector(isLast);
-	const error = useSelector(selectError);
-	const loading = useSelector(selectLoadingAdverts);
+	const error = useSelector(selectFetchError);
+	const loading = useSelector(selectFetchLoading);
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -49,7 +49,7 @@ const CatalogPage = () => {
 	const onLoadMore = () => {
 		setPage(prevPage => prevPage + 1);
 	};
-	console.log(error);
+	
 	return (
 		<CatalogSection>
 			<Container>
