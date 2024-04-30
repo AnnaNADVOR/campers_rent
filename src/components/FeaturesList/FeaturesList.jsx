@@ -1,11 +1,13 @@
-import Feature from './Feature';
 import sprite from '../../assets/icons/sprite.svg';
 import capitalize from 'services/capitalize';
+
+import Feature from './Feature';
+
 import { DetailItem } from '../Advert/Advert.styled';
 import { List } from './FeaturesList.styled';
+
 const FeaturesList = ({ advert }) => {
 	const details = Object.entries(advert.details);
-
 	return (
 		<List>
 			{advert.children > 0 && (

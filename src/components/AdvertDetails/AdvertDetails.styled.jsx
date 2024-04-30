@@ -122,10 +122,17 @@ export const MainInfoContainer = styled.div`
 	padding-right: 16px;
 
 	&::-webkit-scrollbar {
-		width: 8px;
+		width: 8px;		
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color:transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color:#d9d9d9;
 		border-radius: 7px;
-		height: 264px;
-		background: #d9d9d9;
+		width: 8px;		
 	}
 
 	@media screen and (min-width: 768px) {

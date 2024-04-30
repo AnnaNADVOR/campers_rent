@@ -23,7 +23,6 @@ export const FilterByOptions = ({
 			<InputsList>
 				{options.map(option => (
 					<OptionContainer key={option.text}>
-						
 						<Label htmlFor={option.name}>
 							<Input
 								onChange={selectOption}
@@ -38,7 +37,7 @@ export const FilterByOptions = ({
 								</OptionIcon>
 								{option.text}
 							</OptionInfo>
-						</Label>						
+						</Label>
 					</OptionContainer>
 				))}
 			</InputsList>

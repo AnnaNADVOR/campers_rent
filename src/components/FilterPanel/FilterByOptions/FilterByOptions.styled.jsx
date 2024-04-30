@@ -17,7 +17,7 @@ export const Legend = styled.legend`
 	}
 `;
 
-export const InputsList = styled.ul `
+export const InputsList = styled.ul`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 5px;

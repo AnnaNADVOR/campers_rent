@@ -20,6 +20,7 @@ export const HeaderContainer = styled.div`
 		padding-top: 0;
 	}
 `;
+
 export const LogoIcon = styled.svg`
 	fill: ${({ theme }) => theme.colors.accentOrange};
 	width: 50px;

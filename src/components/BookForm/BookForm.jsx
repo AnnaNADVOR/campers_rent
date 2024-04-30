@@ -76,7 +76,7 @@ const BookForm = ({ advertId }) => {
 						buttonColor: '#F7F7F7',
 						backOverlayColor: 'rgba(17, 18, 19, 0.4)',
 					},
-				});			
+				});
 			}
 		});
 	};
@@ -96,7 +96,7 @@ const BookForm = ({ advertId }) => {
 							name="customerName"
 							as="input"
 							type="text"
-							placeholder="Name"							
+							placeholder="Name"
 						/>
 						{touched.customerName && errors.customerName ? (
 							<ErrorMassage>{errors.customerName}</ErrorMassage>

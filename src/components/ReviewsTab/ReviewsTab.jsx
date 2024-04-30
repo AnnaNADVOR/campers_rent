@@ -52,7 +52,6 @@ const ReviewsTab = ({ reviews }) => {
 								</RatingList>
 							</div>
 						</ReviewerContainer>
-
 						<ReviewText>{review.comment}</ReviewText>
 					</ReviewsItem>
 				))}

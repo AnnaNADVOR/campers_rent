@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import AdvertsList from 'components/AdvertsList/AdvertsList';
 import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
@@ -49,45 +50,50 @@ const CatalogPage = () => {
 	const onLoadMore = () => {
 		setPage(prevPage => prevPage + 1);
 	};
-	
+
 	return (
-		<CatalogSection>
-			<Container>
-				<CatalogContainer>
-					<FilterPart>
-						<FilterPanel
-							setSearchParams={setSearchParams}
-							setAdverts={setAdverts}
-							setPage={setPage}
-							searchParams={searchParams}
-						/>
-					</FilterPart>
-					<AdvertsPart>
-						{loading && page === 1 && !error ? (
-							<MainLoader />
-						) : (
-							<>
-								{error ? (
-									<Notification message="No items" />
-								) : (
-									<AdvertsList adverts={adverts} />
-								)}
-								{!last && adverts.length > 0 && !error && (
-									<SecondaryButton
-										text="Load more"
-										type="submit"
-										onClick={onLoadMore}
-										loader={
-											loading && page >= 2 && <ButtonLoader color="#d84343" />
-										}
-									/>
-								)}
-							</>
-						)}
-					</AdvertsPart>
-				</CatalogContainer>
-			</Container>
-		</CatalogSection>
+		<HelmetProvider>
+			<Helmet>
+				<title>Catalog</title>
+			</Helmet>
+			<CatalogSection>
+				<Container>
+					<CatalogContainer>
+						<FilterPart>
+							<FilterPanel
+								setSearchParams={setSearchParams}
+								setAdverts={setAdverts}
+								setPage={setPage}
+								searchParams={searchParams}
+							/>
+						</FilterPart>
+						<AdvertsPart>
+							{loading && page === 1 && !error ? (
+								<MainLoader />
+							) : (
+								<>
+									{error ? (
+										<Notification message="No items" />
+									) : (
+										<AdvertsList adverts={adverts} />
+									)}
+									{!last && adverts.length > 0 && !error && (
+										<SecondaryButton
+											text="Load more"
+											type="submit"
+											onClick={onLoadMore}
+											loader={
+												loading && page >= 2 && <ButtonLoader color="#d84343" />
+											}
+										/>
+									)}
+								</>
+							)}
+						</AdvertsPart>
+					</CatalogContainer>
+				</Container>
+			</CatalogSection>
+		</HelmetProvider>
 	);
 };
 

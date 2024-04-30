@@ -1,13 +1,16 @@
-import NavBar from 'components/NavBar/NavBar';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+
+import sprite from '../../assets/icons/sprite.svg';
+import NavBar from 'components/NavBar/NavBar';
+
 import {
-	Header,	
+	Header,
 	HeaderContainer,
 	LogoIcon,
-	Logo,
+	Logo,	
 } from './Layout.styled';
-import sprite from '../../assets/icons/sprite.svg';
+
 const Layout = () => {
 	return (
 		<>
@@ -23,8 +26,8 @@ const Layout = () => {
 				</HeaderContainer>
 			</Header>
 			<main>
-				<Suspense>					
-					<Outlet />					
+				<Suspense>
+					<Outlet />
 				</Suspense>
 			</main>
 		</>

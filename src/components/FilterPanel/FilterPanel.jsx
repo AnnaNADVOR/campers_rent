@@ -4,17 +4,18 @@ import {
 	EQUIPMENT_OPTIONS,
 	VEHICLE_OPTIONS,
 } from '../../constants/index';
+
 import LocationFilter from './LocationFilter/LocationFilter';
 import FilterByOptions from './FilterByOptions/FilterByOptions';
 import MainButton from '../Buttons/MainButton/MainButton';
 import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
+
 import {
 	FilterEquipmentContainer,
 	FilterFormContainer,
 	FilterPanelContainer,
 	ButtonsList,
 } from './FilterPaner.styled';
-
 
 const FilterPanel = ({
 	setSearchParams,
@@ -134,10 +135,7 @@ const FilterPanel = ({
 			{Object.keys(filterParams).length > 0 && (
 				<ButtonsList>
 					<li>
-						<MainButton
-							text="Search"
-							type="submit"
-						/>
+						<MainButton text="Search" type="submit" />
 					</li>
 					<li>
 						<SecondaryButton

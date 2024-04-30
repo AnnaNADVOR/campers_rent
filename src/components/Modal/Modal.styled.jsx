@@ -33,6 +33,7 @@ export const ModalContainer = styled.div`
 		padding: 40px;
 	}
 `;
+
 export const CloseButton = styled.button`
 	position: absolute;
 	width: 32px;
@@ -51,6 +52,7 @@ export const CloseButton = styled.button`
 		stroke: ${({ theme }) => theme.colors.accentOrangeHover};
 	}
 `;
+
 export const CloseIcon = styled.svg`
 	fill: currentColor;
 	stroke: ${({ theme }) => theme.colors.darkblue};
