@@ -57,7 +57,6 @@ const FilterPanel = ({
 	};
 
 	const handleSelectVehicleForm = event => {
-		console.dir(event.target);
 		setFilterParams(prevParams => ({
 			...prevParams,
 			form: event.target.value,

@@ -41,7 +41,6 @@ const advertsSlice = createSlice({
 				state.fetchError = action.payload;
 			})
 
-
 			.addCase(bookedVan.pending, state => {
 				state.isBookedLoading = true;
 			})
