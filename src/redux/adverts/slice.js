@@ -3,11 +3,6 @@ import { bookedVan, fetchAdverts } from './operations';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
 
-const handleRejected = (state, action) => {
-	state.isLoading = false;
-	state.error = action.payload;
-};
-
 const advertsSlice = createSlice({
 	name: 'adverts',
 	initialState: {
