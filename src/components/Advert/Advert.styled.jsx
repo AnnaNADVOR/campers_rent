@@ -84,7 +84,6 @@ export const Rating = styled.div`
 `;
 
 export const RatingValue = styled.p`
-	text-decoration: underline;
 	color: ${({ theme }) => theme.colors.darkblue};
 `;
 
@@ -104,6 +103,7 @@ export const Location = styled.div`
 
 export const Address = styled.address`
 	font-style: normal;
+	text-decoration: underline;
 `;
 
 export const Description = styled.p`

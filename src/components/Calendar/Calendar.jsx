@@ -45,6 +45,7 @@ const Calendar = () => {
 			dateFormat={getDateFormat(field.value)}
 			placeholderText="Booking date"
 			name="bookingDate"
+			inputmode="none"
 		/>
 	);
 };
