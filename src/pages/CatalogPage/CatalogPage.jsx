@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
+import { useLocation, useNavigate,  useSearchParams } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 import AdvertsList from 'components/AdvertsList/AdvertsList';
@@ -24,28 +24,69 @@ import {
 } from './CatalogPage.styled';
 import MainLoader from 'components/Loaders/MainLoader/MainLoader';
 import Notification from 'components/Notification/Notification';
+import SortedSelect from 'components/SortedSelect/SortedSelect';
 
 const CatalogPage = () => {
 	const [adverts, setAdverts] = useState([]);
+	// const [filterParams, setFilterParams] = useState({});
 	const [page, setPage] = useState(1);
 	const [searchParams, setSearchParams] = useSearchParams();
+	const [sortOption, setSortOption] = useState();
+	const [loaded, setLoaded] = useState();
+	// const location = useLocation();
 	const last = useSelector(isLast);
 	const error = useSelector(selectFetchError);
 	const loading = useSelector(selectFetchLoading);
 	const dispatch = useDispatch();
+	const filterRef = useRef();
 
+
+	let params = {};
+	for (const [key, value] of searchParams.entries()) {
+		params[key] = value;
+	}
+
+	const [filterParams, setFilterParams] = useState(params);
+
+	// window.addEventListener("load", function (event) {
+	// 	setLoaded(event.type)
+	//   });
+
+	// useEffect(() => {
+	// 	// let params = {};
+	// 	// for (const [key, value] of searchParams.entries()) {
+	// 	// 	params[key] = value;
+	// 	// }
+	// 	// console.log("params", params)
+	// 	console.log("params")
+	// 	setFilterParams({ location: 'Kyiv' })
+	//   }, [loaded])
+		
+	
+	// setFilterParams({ location: 'Kyiv' })
+
+	console.log("filterParams", filterParams)
+	
 	useEffect(() => {
+
 		let params = {};
 		for (const [key, value] of searchParams.entries()) {
 			params[key] = value;
 		}
-
+		
 		dispatch(fetchAdverts({ page: page, limit: 4, filterParams: params })).then(
 			response => {
-				setAdverts(prevAdverbs => [...prevAdverbs, ...response.payload]);
+				if (response.type === 'adverts/fetchAdverts/fulfilled') {
+					setAdverts(prevAdverbs => [...prevAdverbs, ...response.payload]);	
+				}							
 			}
 		);
 	}, [dispatch, page, searchParams]);
+
+	useEffect(() => {
+		setPage(1);
+		setAdverts([]);
+	}, [sortOption]);
 
 	const onLoadMore = () => {
 		setPage(prevPage => prevPage + 1);
@@ -61,13 +102,27 @@ const CatalogPage = () => {
 					<CatalogContainer>
 						<FilterPart>
 							<FilterPanel
+								searchParams={searchParams}
 								setSearchParams={setSearchParams}
 								setAdverts={setAdverts}
 								setPage={setPage}
-								searchParams={searchParams}
+								filterParams={filterParams}
+								setFilterParams={setFilterParams}
+								setSortOption={setSortOption}
+								filterRef={filterRef}
 							/>
 						</FilterPart>
 						<AdvertsPart>
+							{!error && (
+								<SortedSelect
+									sortOption={sortOption}
+									setSortOption={setSortOption}
+									setSearchParams={setSearchParams}
+									searchParams={searchParams}
+									setAdverts={setAdverts}
+									setPage={setPage}
+								/>
+							)}
 							{loading && page === 1 && !error ? (
 								<MainLoader />
 							) : (

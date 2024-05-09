@@ -30,11 +30,11 @@ margin-bottom: 20px;
 export const AdvertsPart = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
-	align-items: center;
+	/* gap: 20px; */
+	/* align-items: center; */
 
 	@media screen and (min-width: 1440px) {			
-		gap: 50px;
+		/* gap: 50px; */
 		width: 70%;
 	}
 `;

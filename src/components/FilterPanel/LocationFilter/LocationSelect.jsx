@@ -4,9 +4,9 @@ import sprite from '../../../assets/icons/sprite.svg';
 import {
 	LocationLabel,
 	LocationIcon,
-} from './LocationFilter.styled';
+} from './LocationSelect.styled';
 
-const LocationFilter = ({ changeLocation, selectOptions, selectRef }) => {
+const LocationSelect = ({ changeLocation, selectOptions, selectRef }) => {
 	return (
 		<LocationLabel htmlFor="location">
 			Location
@@ -25,4 +25,4 @@ const LocationFilter = ({ changeLocation, selectOptions, selectRef }) => {
 	);
 };
 
-export default LocationFilter;
+export default LocationSelect;

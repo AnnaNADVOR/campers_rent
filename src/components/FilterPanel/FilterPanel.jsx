@@ -5,7 +5,7 @@ import {
 	VEHICLE_OPTIONS,
 } from '../../constants/index';
 
-import LocationFilter from './LocationFilter/LocationFilter';
+import LocationFilter from './LocationFilter/LocationSelect';
 import FilterByOptions from './FilterByOptions/FilterByOptions';
 import MainButton from '../Buttons/MainButton/MainButton';
 import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
@@ -22,28 +22,35 @@ const FilterPanel = ({
 	setAdverts,
 	setPage,
 	searchParams,
+	filterRef,
+	filterParams,
+	setFilterParams,
+	setSortOption,
 }) => {
-	const [filterParams, setFilterParams] = useState({});
 	const [checkRadioValue, setCheckRadioValue] = useState('');
-	const formRef = useRef();
 	const selectRef = useRef();
 
 	const handleSelectLocation = values => {
+		
 		if (!values.length) {
-			setFilterParams(prevPrams => {
-				const { location: _, ...rest } = prevPrams;
+			setFilterParams(prevParams => {
+				const { location: _, ...rest } = prevParams;
 				return { ...rest };
 			});
+				
 			return;
 		}
+
 		setFilterParams(prevParams => ({
 			...prevParams,
 			location: values[0].value,
 		}));
+
+				
 	};
 
 	const handleSelectEquipment = event => {
-		if (event.target.checked) {
+			if (event.target.checked) {
 			setFilterParams(prevParams => ({
 				...prevParams,
 				[`details[${event.target.name}]`]: event.target.value,
@@ -69,14 +76,16 @@ const FilterPanel = ({
 		if (Object.keys(filterParams).length > 0) {
 			setAdverts([]);
 			setPage(1);
-			setSearchParams({ ...filterParams });
+			setSortOption();
+			localStorage.setItem('Params', JSON.stringify(filterParams));
+			setSearchParams({ ...filterParams });			
 		}
 		return;
 	};
 
 	const onRadioInputClick = event => {
 		if (event.target.value === checkRadioValue) {
-			console.dir('click check', event.target);
+			
 			setFilterParams(prevPrams => {
 				const { [event.target.name]: _, ...rest } = prevPrams;
 				return { ...rest };
@@ -84,6 +93,7 @@ const FilterPanel = ({
 			event.target.checked = false;
 			setCheckRadioValue('');
 		}
+	
 		return;
 	};
 
@@ -91,10 +101,11 @@ const FilterPanel = ({
 		if (searchParams.size > 0) {
 			setAdverts([]);
 			setPage(1);
+			setSortOption();
 			setSearchParams();
 		}
 		selectRef.current?.clearAll();
-		[...formRef.current?.elements].forEach(input => {
+		[...filterRef.current?.elements].forEach(input => {
 			if (input.type === 'checkbox' || input.type === 'radio') {
 				input.checked = false;
 			}
@@ -104,7 +115,7 @@ const FilterPanel = ({
 	};
 
 	return (
-		<form onSubmit={handleSubmitForm} ref={formRef}>
+		<form onSubmit={handleSubmitForm} ref={filterRef}>
 			<FilterPanelContainer>
 				<LocationFilter
 					selectOptions={LOCATION_OPTIONS}
@@ -134,7 +145,7 @@ const FilterPanel = ({
 			{Object.keys(filterParams).length > 0 && (
 				<ButtonsList>
 					<li>
-						<MainButton text="Search" type="submit" />
+						<MainButton text="Search" type="submit"/>
 					</li>
 					<li>
 						<SecondaryButton

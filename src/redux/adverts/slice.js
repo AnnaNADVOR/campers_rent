@@ -57,7 +57,7 @@ const advertsSlice = createSlice({
 });
 
 const persistConfig = {
-	key: 'auth',
+	key: 'adverts',
 	storage,
 	whitelist: ['favorites'],
 };
@@ -66,5 +66,6 @@ export const advertsReducer = persistReducer(
 	persistConfig,
 	advertsSlice.reducer
 );
+
 export const addToFavorites = advertsSlice.actions.addToFavorites;
 export const removeFromFavorites = advertsSlice.actions.removeFromFavorites;
