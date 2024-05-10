@@ -144,7 +144,7 @@ const FilterPanel = ({
 				</li>
 				<li>
 					<SecondaryButton
-						text="Reset"
+						text="Show All"
 						type="button"
 						onClick={handleResetClick}
 					/>
