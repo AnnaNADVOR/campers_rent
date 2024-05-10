@@ -11,11 +11,11 @@ const LocationSelect = ({ changeLocation, selectOptions, selectRef }) => {
 		<LocationLabel htmlFor="location">
 			Location
 			<Select
-				ref={selectRef}
+				ref={selectRef}					
 				onChange={changeLocation}
 				options={selectOptions}
 				placeholder="Kyiv"
-				name="location"
+				name="location"					
 				clearable
 			/>
 			<LocationIcon>

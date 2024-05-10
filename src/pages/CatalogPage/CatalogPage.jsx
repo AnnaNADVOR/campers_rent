@@ -1,8 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState, useRef } from 'react';
-import { useLocation, useNavigate,  useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-
 import AdvertsList from 'components/AdvertsList/AdvertsList';
 import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton';
 import FilterPanel from 'components/FilterPanel/FilterPanel';
@@ -28,57 +27,31 @@ import SortedSelect from 'components/SortedSelect/SortedSelect';
 
 const CatalogPage = () => {
 	const [adverts, setAdverts] = useState([]);
-	// const [filterParams, setFilterParams] = useState({});
 	const [page, setPage] = useState(1);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [sortOption, setSortOption] = useState();
-	const [loaded, setLoaded] = useState();
-	// const location = useLocation();
 	const last = useSelector(isLast);
 	const error = useSelector(selectFetchError);
 	const loading = useSelector(selectFetchLoading);
 	const dispatch = useDispatch();
 	const filterRef = useRef();
-
-
 	let params = {};
 	for (const [key, value] of searchParams.entries()) {
 		params[key] = value;
 	}
-
 	const [filterParams, setFilterParams] = useState(params);
 
-	// window.addEventListener("load", function (event) {
-	// 	setLoaded(event.type)
-	//   });
-
-	// useEffect(() => {
-	// 	// let params = {};
-	// 	// for (const [key, value] of searchParams.entries()) {
-	// 	// 	params[key] = value;
-	// 	// }
-	// 	// console.log("params", params)
-	// 	console.log("params")
-	// 	setFilterParams({ location: 'Kyiv' })
-	//   }, [loaded])
-		
-	
-	// setFilterParams({ location: 'Kyiv' })
-
-	console.log("filterParams", filterParams)
-	
 	useEffect(() => {
-
 		let params = {};
 		for (const [key, value] of searchParams.entries()) {
 			params[key] = value;
 		}
-		
+
 		dispatch(fetchAdverts({ page: page, limit: 4, filterParams: params })).then(
 			response => {
 				if (response.type === 'adverts/fetchAdverts/fulfilled') {
-					setAdverts(prevAdverbs => [...prevAdverbs, ...response.payload]);	
-				}							
+					setAdverts(prevAdverbs => [...prevAdverbs, ...response.payload]);
+				}
 			}
 		);
 	}, [dispatch, page, searchParams]);

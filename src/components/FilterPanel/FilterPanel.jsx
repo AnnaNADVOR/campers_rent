@@ -16,7 +16,6 @@ import {
 	FilterPanelContainer,
 	ButtonsList,
 } from './FilterPaner.styled';
-
 const FilterPanel = ({
 	setSearchParams,
 	setAdverts,
@@ -31,13 +30,12 @@ const FilterPanel = ({
 	const selectRef = useRef();
 
 	const handleSelectLocation = values => {
-		
 		if (!values.length) {
 			setFilterParams(prevParams => {
 				const { location: _, ...rest } = prevParams;
 				return { ...rest };
 			});
-				
+
 			return;
 		}
 
@@ -45,12 +43,10 @@ const FilterPanel = ({
 			...prevParams,
 			location: values[0].value,
 		}));
-
-				
 	};
 
 	const handleSelectEquipment = event => {
-			if (event.target.checked) {
+		if (event.target.checked) {
 			setFilterParams(prevParams => ({
 				...prevParams,
 				[`details[${event.target.name}]`]: event.target.value,
@@ -78,14 +74,13 @@ const FilterPanel = ({
 			setPage(1);
 			setSortOption();
 			localStorage.setItem('Params', JSON.stringify(filterParams));
-			setSearchParams({ ...filterParams });			
+			setSearchParams({ ...filterParams });
 		}
 		return;
 	};
 
 	const onRadioInputClick = event => {
 		if (event.target.value === checkRadioValue) {
-			
 			setFilterParams(prevPrams => {
 				const { [event.target.name]: _, ...rest } = prevPrams;
 				return { ...rest };
@@ -93,7 +88,7 @@ const FilterPanel = ({
 			event.target.checked = false;
 			setCheckRadioValue('');
 		}
-	
+
 		return;
 	};
 
@@ -139,10 +134,23 @@ const FilterPanel = ({
 						onClick={onRadioInputClick}
 						inputType="radio"
 						radioName="form"
+						filterParams={filterParams}
 					/>
 				</FilterFormContainer>
 			</FilterPanelContainer>
-			{Object.keys(filterParams).length > 0 && (
+			<ButtonsList>
+				<li>
+					<MainButton text="Search" type="submit" />
+				</li>
+				<li>
+					<SecondaryButton
+						text="Reset"
+						type="button"
+						onClick={handleResetClick}
+					/>
+				</li>
+			</ButtonsList>
+			{/* {Object.keys(filterParams).length > 0 && (
 				<ButtonsList>
 					<li>
 						<MainButton text="Search" type="submit"/>
@@ -155,7 +163,7 @@ const FilterPanel = ({
 						/>
 					</li>
 				</ButtonsList>
-			)}
+			)} */}
 		</form>
 	);
 };

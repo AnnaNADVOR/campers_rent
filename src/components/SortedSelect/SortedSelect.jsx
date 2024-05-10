@@ -4,10 +4,9 @@ import {
 	SelectContainer,
 	OptionsList,
 	MenuContainer,
-    SelectButton,
-    SelectInput,
-    SelectInputLabel,
-
+	SelectButton,
+	SelectInput,
+	SelectInputLabel,
 } from './SortedSelect.styled';
 
 const SortedSelect = ({
@@ -21,6 +20,11 @@ const SortedSelect = ({
 	const [showMenu, setShowMenu] = useState(false);
 	const menuRef = useRef(null);
 	const buttonRef = useRef(null);
+
+	let params = {};
+	for (const [key, value] of searchParams.entries()) {
+		params[key] = value;
+	}
 
 	const toggleMenu = () => {
 		setShowMenu(!showMenu);
@@ -53,11 +57,6 @@ const SortedSelect = ({
 	}, [setShowMenu]);
 
 	const handleSort = event => {
-		let params = {};
-		for (const [key, value] of searchParams.entries()) {
-			params[key] = value;
-		}
-
 		switch (event.target.value) {
 			case 'cheap':
 				setSortOption(event.target.value);
@@ -111,10 +110,22 @@ const SortedSelect = ({
 		<SelectContainer>
 			<SelectButton onClick={toggleMenu} ref={buttonRef}>
 				Sort by
-				{sortOption === 'cheap' && <span>Price: Low to High</span>}
-				{sortOption === 'expensive' && <span>Price: High to Low</span>}
-				{sortOption === 'lowRating' && <span>Rating: Low to High</span>}
-				{sortOption === 'highRating' && <span>Rating: High to Low</span>}
+				{(sortOption === 'cheap' ||
+					(params.sortBy === 'price' && params.order === 'asc')) && (
+					<span>Price: Low to High</span>
+				)}
+				{(sortOption === 'expencive' ||
+					(params.sortBy === 'price' && params.order === 'desc')) && (
+					<span>Price: High to Low</span>
+				)}
+				{(sortOption === 'lowRating' ||
+					(params.sortBy === 'rating' && params.order === 'asc')) && (
+					<span>Rating: Low to High</span>
+				)}
+				{(sortOption === 'highRating' ||
+					(params.sortBy === 'rating' && params.order === 'desc')) && (
+					<span>Rating: High to Low</span>
+				)}
 				<svg>
 					<use href={`${sprite}#sorted`}></use>
 				</svg>
@@ -123,7 +134,7 @@ const SortedSelect = ({
 				<MenuContainer ref={menuRef}>
 					<OptionsList>
 						<li>
-							<SelectInputLabel htmlFor='cheap'> 
+							<SelectInputLabel htmlFor="cheap">
 								<SelectInput
 									type="radio"
 									name="sort"
@@ -134,7 +145,7 @@ const SortedSelect = ({
 							</SelectInputLabel>
 						</li>
 						<li>
-							<SelectInputLabel htmlFor='expencive'>
+							<SelectInputLabel htmlFor="expencive">
 								<SelectInput
 									type="radio"
 									name="sort"
@@ -145,7 +156,7 @@ const SortedSelect = ({
 							</SelectInputLabel>
 						</li>
 						<li>
-							<SelectInputLabel htmlFor='lowRating'>
+							<SelectInputLabel htmlFor="lowRating">
 								<SelectInput
 									type="radio"
 									name="sort"
@@ -156,7 +167,7 @@ const SortedSelect = ({
 							</SelectInputLabel>
 						</li>
 						<li>
-							<SelectInputLabel htmlFor='highRating'>
+							<SelectInputLabel htmlFor="highRating">
 								<SelectInput
 									type="radio"
 									name="sort"
