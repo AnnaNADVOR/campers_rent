@@ -51,9 +51,9 @@ export const SelectButton = styled.button`
 `;
 
 export const OptionsList = styled.ul`
-display: flex; 
-flex-direction: column;
-gap: 8px; 
+	display: flex; 
+	flex-direction: column;
+	gap: 8px; 
 `
 export const SelectInput = styled.input`
     opacity: 0; 

@@ -6,6 +6,8 @@ export const SecondaryBtn = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
 	border-radius: 200px;
 	border: ${({ theme }) => theme.borders.secondaryButtonBorder};
 	padding: 12px 20px;

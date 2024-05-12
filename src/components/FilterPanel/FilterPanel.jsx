@@ -16,6 +16,7 @@ import {
 	FilterPanelContainer,
 	ButtonsList,
 } from './FilterPaner.styled';
+import { useLocation } from 'react-router-dom';
 const FilterPanel = ({
 	setSearchParams,
 	setAdverts,
@@ -28,14 +29,20 @@ const FilterPanel = ({
 }) => {
 	const [checkRadioValue, setCheckRadioValue] = useState('');
 	const selectRef = useRef();
+	const defaultSelectValues = [];
+	const location = useLocation();
+			
+	if (location.search.includes("location")) {
+		const locationItems = filterParams.location.split(", ")
+		defaultSelectValues.push({ label: locationItems[1], value: filterParams.location });	
+	}
 
-	const handleSelectLocation = values => {
-		if (!values.length) {
+	const handleSelectLocation = values => {		
+		if (!values.length) {			
 			setFilterParams(prevParams => {
 				const { location: _, ...rest } = prevParams;
 				return { ...rest };
 			});
-
 			return;
 		}
 
@@ -111,11 +118,13 @@ const FilterPanel = ({
 
 	return (
 		<form onSubmit={handleSubmitForm} ref={filterRef}>
-			<FilterPanelContainer>
+			<FilterPanelContainer >
 				<LocationFilter
 					selectOptions={LOCATION_OPTIONS}
 					changeLocation={handleSelectLocation}
 					selectRef={selectRef}
+					defaultSelectValues = {defaultSelectValues }
+					
 				/>
 				<FilterEquipmentContainer>
 					Filters

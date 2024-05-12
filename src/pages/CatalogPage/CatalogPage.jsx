@@ -7,6 +7,7 @@ import SecondaryButton from 'components/Buttons/SecondaryButton/SecondaryButton'
 import FilterPanel from 'components/FilterPanel/FilterPanel';
 import ButtonLoader from 'components/Loaders/ButtonLoader';
 import Container from 'components/Container/Container';
+import sprite from '../../assets/icons/sprite.svg';
 
 import {
 	isLast,
@@ -100,8 +101,12 @@ const CatalogPage = () => {
 								<MainLoader />
 							) : (
 								<>
-									{error ? (
-										<Notification message="No items" />
+									{error && adverts.length<=0 ? (
+										<Notification
+											message="No matching items found"
+											comment="Try changing your search parameters"
+											iconHref={`${sprite}#search`}
+										/>
 									) : (
 										<AdvertsList adverts={adverts} />
 									)}
