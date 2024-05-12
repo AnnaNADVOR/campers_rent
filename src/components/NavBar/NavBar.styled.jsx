@@ -53,4 +53,31 @@ export const Link = styled(NavLink)`
 			top: 75px;
 		}
 	}
+
+	svg {
+		width: 20px;
+		height: 20px;
+		fill: none;
+		stroke: #101828;
+		position: absolute;
+		bottom: 50%;
+		left: 100%;
+	}
+
+	span {
+		position: absolute;
+		bottom: 50%;
+		left: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 20px;
+		height: 20px;
+		border: ${({ theme }) => theme.borders.accenLighttBorder};
+		background-color: ${({ theme }) => theme.colors.accentOrange};
+		color: ${({ theme }) => theme.colors.milky};
+		border-radius: 50%;
+		text-align: center;
+		font-size: 12px;
+	}
 `;
