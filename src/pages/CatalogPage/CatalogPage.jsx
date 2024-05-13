@@ -84,6 +84,8 @@ const CatalogPage = () => {
 								setFilterParams={setFilterParams}
 								setSortOption={setSortOption}
 								filterRef={filterRef}
+								currentSearchParams = {params}
+
 							/>
 						</FilterPart>
 						<AdvertsPart>
