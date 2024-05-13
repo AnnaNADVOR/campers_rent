@@ -26,7 +26,9 @@ import MainLoader from 'components/Loaders/MainLoader/MainLoader';
 import Notification from 'components/Notification/Notification';
 import SortedSelect from 'components/SortedSelect/SortedSelect';
 
+
 const CatalogPage = () => {
+
 	const [adverts, setAdverts] = useState([]);
 	const [page, setPage] = useState(1);
 	const [searchParams, setSearchParams] = useSearchParams();

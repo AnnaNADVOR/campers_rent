@@ -1,5 +1,7 @@
 import { useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import objectEqual from '../../services/objectEqual';
+
 import {
 	LOCATION_OPTIONS,
 	EQUIPMENT_OPTIONS,
@@ -89,7 +91,7 @@ const FilterPanel = ({
 
 	const handleSubmitForm = event => {
 		event.preventDefault();
-		if (JSON.stringify(currentSearchParams) === JSON.stringify(filterParams)) {
+		if (objectEqual(currentSearchParams, filterParams)) {
 			return;
 		}
 
@@ -99,7 +101,7 @@ const FilterPanel = ({
 			setSortOption();
 			setSearchParams({ ...filterParams });
 		}
-		
+
 		return;
 	};
 

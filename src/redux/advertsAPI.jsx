@@ -7,11 +7,14 @@ export async function fetchAdverts(page, limit, filterParams) {
 		page,
 		limit,
 	};
+
 	for (const key in filterParams) {
 		axiosParams[key] = filterParams[key];
 	}
+
 	const { data } = await axios.get('adverts', {
 		params: axiosParams,
 	});
+
 	return data;
 }

@@ -1,8 +1,8 @@
 const separateString = string => {
 	if (string === string.toUpperCase()) {
 		return string;
-  }
-  
+	}
+
 	const lettersArray = string.split('');
 	let delimetr;
 	lettersArray.map((letter, i) => {
