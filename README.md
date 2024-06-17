@@ -26,7 +26,7 @@ It consists of three pages: Home, Catalog, Favorites. It has a simple and intuit
 
 ![Axios](https://img.shields.io/badge/Axios-671ddf)
 ![React Redux](https://img.shields.io/badge/React%20Redux-5e3b96)
-![Redux Rersist](https://img.shields.io/badge/Redux%20Persist-ba8fff)
+![Redux Persist](https://img.shields.io/badge/Redux%20Persist-ba8fff)
 
 ![Emotion](https://img.shields.io/badge/Emotion-D26AC2)
 ![Notiflix](https://img.shields.io/badge/Notiflix-32c682)
